@@ -11,8 +11,4 @@ class Principal
 Principal::main();
 
 
-$rc = new RepoUsuario(Conexion::getConection());//meto en rc 
-$miusuario = $rc->findbyId(1);
-var_dump($miusuario);
-
 ?>
