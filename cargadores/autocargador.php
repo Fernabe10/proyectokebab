@@ -11,8 +11,10 @@ Class Autocargador
     require_once './repositorios/Conexion.php';
     require_once './clases/User.php';
     require_once './clases/Ingrediente.php';
+    require_once './clases/Kebab.php';
     require_once './repositorios/RepoUser.php';
     require_once './repositorios/RepoIngrediente.php';
+    require_once './repositorios/RepoKebab.php';
     
   }
 

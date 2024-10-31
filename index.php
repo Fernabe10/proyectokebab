@@ -10,14 +10,18 @@ class Principal
 
 Principal::main();
 
-// Crear el repositorio
-$repo = new RepoIngrediente();
 
-// Eliminar el ingrediente con ID 1
-if ($repo->eliminarIngrediente(1)) {
-    echo "Ingrediente eliminado correctamente";
-} else {
-    echo "No se encontró el ingrediente con el ID especificado";
+$kebab = new Kebab(
+    null, "Kebab Mixto", "mixto.jpg", 5.99                  
+);
+
+$repoKebab = new RepoKebab();
+
+try {
+    $repoKebab->insertarKebab($kebab);
+    echo "Kebab insertado correctamente";
+} catch (Exception $e) {
+    echo "Error al insertar el kebab: " . $e->getMessage();
 }
 
 ?>
