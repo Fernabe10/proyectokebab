@@ -12,7 +12,6 @@
             </ul>
         </nav>
         <div class="order-button">
-            <a href="#order">Haz tu Pedido</a>
             <a href="?menu=login">Inciar Sesion</a>
             <a href="#order">Registrarse</a>
         </div>
