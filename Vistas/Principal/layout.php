@@ -5,6 +5,7 @@
     <title>Kebabs</title>
     <link rel="stylesheet" href="<?php echo dirname($_SERVER['SCRIPT_NAME']); ?>/css/estilo-header.css">
     <link rel="stylesheet" href="<?php echo dirname($_SERVER['SCRIPT_NAME']); ?>/css/estilo-footer.css">
+    <link rel="stylesheet" href="<?php echo dirname($_SERVER['SCRIPT_NAME']); ?>/css/estilo-landing-page.css">
 
 </head>
 <body>
