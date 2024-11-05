@@ -5,15 +5,15 @@
         </div>
         <nav class="nav">
             <ul>
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#about">Nuestros Kebabs</a></li>
-                <li><a href="#menu">Alérgenos</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li><a href="?menu=inicio">Inicio</a></li>
+                <li><a href="?menu=kebabs">Kebabs</a></li>
+                <li><a href="?menu=alergenos">Alérgenos</a></li>
+                <li><a href="?menu=contacto">Contacto</a></li>
             </ul>
         </nav>
         <div class="order-button">
             <a href="#order">Haz tu Pedido</a>
-            <a href="#order">Inciar Sesion</a>
+            <a href="?menu=login">Inciar Sesion</a>
             <a href="#order">Registrarse</a>
         </div>
     </header>
