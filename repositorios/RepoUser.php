@@ -7,10 +7,11 @@ class RepoUsuario {
     }
 
     public function insertarUsuario(User $usuario) {
-        $stmt = $this->con->prepare("INSERT INTO users (nombre, contrasena, direccion, monedero, rol, foto) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt = $this->con->prepare("INSERT INTO users (nombre, contrasena, correo, direccion, monedero, rol, foto) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([
             $usuario->getNombre(),
             $usuario->getContrasena(),
+            $usuario->getCorreo(),
             $usuario->getDireccion(),
             $usuario->getMonedero(),
             $usuario->getRol(),
@@ -21,11 +22,12 @@ class RepoUsuario {
 
     public function modificarUsuario(User $usuario) {
         
-        $stmt = $this->con->prepare("UPDATE users SET nombre = :nombre, contrasena = :contrasena, direccion = :direccion, monedero = :monedero, rol = :rol, foto = :foto WHERE id = :id");
+        $stmt = $this->con->prepare("UPDATE users SET nombre = :nombre, contrasena = :contrasena, correo = :correo, direccion = :direccion, monedero = :monedero, rol = :rol, foto = :foto WHERE id = :id");
         
         $stmt->execute([
             'nombre' => $usuario->getNombre(),
             'contrasena' => $usuario->getContrasena(),
+            'correo' => $usuario->getCorreo(),
             'direccion' => $usuario->getDireccion(),
             'monedero' => $usuario->getMonedero(),
             'rol' => $usuario->getRol(),
@@ -47,6 +49,7 @@ class RepoUsuario {
                 $resultado['id'],
                 $resultado['nombre'],
                 $resultado['contrasena'],
+                $resultado['correo'],
                 $resultado['direccion'],
                 $resultado['monedero'],
                 $resultado['rol'],

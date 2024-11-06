@@ -1,52 +1,54 @@
-.footer {
+footer {
     background-color: #333;
     color: #fff;
     padding: 40px 10%;
     font-size: 0.9rem;
 }
 
-.footer-content {
+footer > div {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.footer-section {
+footer > div > div {
     flex: 1;
     min-width: 200px;
 }
 
-.footer-section h2 {
+footer > div > div:nth-child(1) h2,
+footer > div > div:nth-child(2) h2 {
     font-size: 1.2rem;
     margin-bottom: 15px;
 }
 
-.footer-section p {
+footer > div > div:nth-child(1) p,
+footer > div > div:nth-child(2) p {
     line-height: 1.6;
 }
 
-.footer-section a {
+footer > div > div:nth-child(2) a {
     color: #ffdfba;
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.footer-section a:hover {
+footer > div > div:nth-child(2) a:hover {
     color: #ff6347;
 }
 
-.footer-section .socials a {
+footer > div > div:nth-child(2) .redes a {
     display: inline-block;
     margin-right: 10px;
 }
 
-.footer-section .socials img {
+footer > div > div:nth-child(2) .redes img {
     width: 24px;
     height: 24px;
 }
 
-.footer-bottom {
+footer > div:nth-last-child(1) {
     text-align: center;
     padding-top: 20px;
     font-size: 0.8rem;

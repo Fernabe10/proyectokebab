@@ -19,7 +19,7 @@ class Autocargador
         require_once $raiz . 'repositorios/RepoUser.php';
         require_once $raiz . 'repositorios/RepoIngrediente.php';
         require_once $raiz . 'repositorios/RepoKebab.php';
-        require_once $raiz . 'controladores/controladorUser.php';
+        require_once $raiz . 'controladores/controladorRegisterUser.php';
     }
 }
 

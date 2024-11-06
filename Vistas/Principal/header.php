@@ -1,9 +1,9 @@
-<header class="header">
-        <div class="logo">
+<header>
+        <div>
         <img src="images/logo.png" alt="Kebab Express Logo">
             <span>Kebab Express</span>
         </div>
-        <nav class="nav">
+        <nav>
             <ul>
                 <li><a href="?menu=inicio">Inicio</a></li>
                 <li><a href="?menu=kebabs">Kebabs</a></li>
@@ -11,7 +11,7 @@
                 <li><a href="?menu=contacto">Contacto</a></li>
             </ul>
         </nav>
-        <div class="order-button">
+        <div>
             <a href="?menu=login">Inciar Sesion</a>
             <a href="?menu=register">Registrarse</a>
         </div>

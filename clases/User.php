@@ -2,16 +2,18 @@
 class User {
     private $id;
     private $nombre;
-    private $contrasena; 
+    private $contrasena;
+    private $correo; 
     private $direccion;
     private $monedero;
     private $rol;
     private $foto;
 
-    public function __construct($id, $nombre, $contrasena, $direccion, $monedero, $rol, $foto) {
+    public function __construct($id, $nombre, $contrasena, $correo, $direccion, $monedero, $rol, $foto) {
         $this->id = $id;
         $this->nombre = $nombre;
-        $this->contrasena = $contrasena; 
+        $this->contrasena = $contrasena;
+        $this->correo = $correo; 
         $this->direccion = $direccion;
         $this->monedero = $monedero;
         $this->rol = $rol;
@@ -30,6 +32,10 @@ class User {
 
     public function getContrasena() {
         return $this->contrasena;
+    }
+
+    public function getCorreo() {
+        return $this->correo;
     }
 
     public function getDireccion() {
@@ -57,6 +63,10 @@ class User {
         $this->contrasena = $contrasena;
     }
 
+    public function setCorreo($correo) {
+        $this->correo = $correo;
+    }
+
     public function setDireccion($direccion) {
         $this->direccion = $direccion;
     }
@@ -74,7 +84,7 @@ class User {
     }
 
     public function toString() {
-        return "{$this->id} - {$this->nombre} - {$this->contrasena} - {$this->direccion} - {$this->monedero} - {$this->rol}";
+        return "{$this->id} - {$this->nombre} - {$this->contrasena} - {$this->correo} - {$this->direccion} - {$this->monedero} - {$this->rol}";
     }
 }
 ?>

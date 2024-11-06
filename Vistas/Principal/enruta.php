@@ -4,7 +4,7 @@ if (isset($_GET['menu'])) {
         require_once './Vistas/Principal/landing-page.php';
     }
     if ($_GET['menu'] == "login") {
-        require_once './Vistas/Principal/landing-page.php';
+        require_once './Vistas/Login/login.php';
     }
     if ($_GET['menu'] == "register") {
         require_once './Vistas/Login/register.php';
