@@ -3,6 +3,12 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "inicio") {
         require_once './Vistas/Principal/landing-page.php';
     }
+    if ($_GET['menu'] == "login") {
+        require_once './Vistas/Principal/landing-page.php';
+    }
+    if ($_GET['menu'] == "register") {
+        require_once './Vistas/Login/register.php';
+    }
     if ($_GET['menu'] == "kebabs") {
         require_once './Vistas/Mantenimiento/kebabs.php';
     }
@@ -15,7 +21,7 @@ if (isset($_GET['menu'])) {
     }
 
 } else {
-    // Carga la landing page por defecto si no hay `menu` en la URL
+    
     require_once './Vistas/Principal/landing-page.php';
 }
 

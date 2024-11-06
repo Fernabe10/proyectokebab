@@ -18,6 +18,7 @@ class User {
         $this->foto = $foto;
     }
 
+
     // Getters
     public function getId() {
         return $this->id;

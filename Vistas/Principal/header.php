@@ -1,6 +1,6 @@
 <header class="header">
         <div class="logo">
-            <img src="logo.png" alt="Kebab Express Logo">
+        <img src="images/logo.png" alt="Kebab Express Logo">
             <span>Kebab Express</span>
         </div>
         <nav class="nav">
@@ -13,6 +13,6 @@
         </nav>
         <div class="order-button">
             <a href="?menu=login">Inciar Sesion</a>
-            <a href="#order">Registrarse</a>
+            <a href="?menu=register">Registrarse</a>
         </div>
     </header>
