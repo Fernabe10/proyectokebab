@@ -60,6 +60,28 @@ class RepoUsuario {
         }
     }
 
+    public function buscarPorCorreo($correo) {
+        $stmt = $this->con->prepare("SELECT * FROM users WHERE correo = :correo LIMIT 1");
+        $stmt->execute(['correo' => $correo]);
+    
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($resultado) {
+            return new User(
+                $resultado['id'],
+                $resultado['nombre'],
+                $resultado['contrasena'],
+                $resultado['correo'],
+                $resultado['direccion'],
+                $resultado['monedero'],
+                $resultado['rol'],
+                $resultado['foto']
+            );
+        } else {
+            return null;
+        }
+    }
+
     public function eliminarUsuario($id) {
         $stmt = $this->con->prepare("DELETE FROM users WHERE id = :id");
         $stmt->execute(['id' => $id]);

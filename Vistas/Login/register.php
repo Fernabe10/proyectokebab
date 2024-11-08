@@ -3,7 +3,7 @@
 </head>
 
 <h1>Formulario de registro</h1>
-<form action="controladores/controladorRegisterUser.php" method="POST" enctype="multipart/form-data">
+<form action="controladores/RegisterUser.php" method="POST" enctype="multipart/form-data">
     <div>
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" required>
