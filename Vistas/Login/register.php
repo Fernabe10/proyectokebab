@@ -1,9 +1,13 @@
 <head>
-    <link rel="stylesheet" href="<?php echo dirname($_SERVER['SCRIPT_NAME']); ?>/css/estilo-register.css">
+    <link rel="stylesheet" href="css/estilo-register.css">
 </head>
 
 <h1>Formulario de registro</h1>
 <form action="controladores/RegisterUser.php" method="POST" enctype="multipart/form-data">
+    <div>
+        <label for="foto">Foto:</label>
+        <input type="file" name="foto" accept="image/*" required>
+    </div>
     <div>
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" required>
@@ -19,10 +23,6 @@
     <div>
         <label for="direccion">Dirección:</label>
         <input type="text" name="direccion">
-    </div>
-    <div>
-        <label for="foto">Foto:</label>
-        <input type="file" name="foto">
     </div>
 
     <input type="submit" value="Enviar">

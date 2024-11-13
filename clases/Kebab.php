@@ -47,7 +47,7 @@ class Kebab{
         $this->precio_base = $precio_base;
     }
 
-    // toString para representar el objeto en texto
+    
     public function toString() {
         return "ID: {$this->id}, Nombre: {$this->nombre}, Foto: {$this->foto}, Precio Base: {$this->precio_base}";
     }

@@ -1,18 +1,21 @@
 <?php
-require_once '../cargadores/autocargador.php'; 
-session_start();
+require_once '../cargadores/autocargador.php';
+require_once '../helpers/sesion.php';
 
-$correo = $_POST['correo'];
-$contrasena = $_POST['contrasena'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-$repoUsuario = new RepoUsuario();
-$usuario = $repoUsuario->buscarPorCorreo($correo);
+    $repoUsuario = new RepoUsuario();
+    $usuario = $repoUsuario->buscarPorCorreo($email);
 
-if ($usuario && $contrasena == $usuario->getContrasena()) {
-    $_SESSION['usuario_id'] = $usuario->getId();
-    $_SESSION['nombre'] = $usuario->getNombre();
-    echo "Usuario encontrado, bienvenido.";
-} else {
-    echo "Correo o contraseña incorrectos.";
+    if ($usuario && $password === $usuario->getContrasena()) { 
+        Sesion::escribir('usuario', $usuario->getNombre());
+        Sesion::escribir('rol', $usuario->getRol());  
+        
+        header('Location: ../index.php');
+        exit;
+    } else {
+        echo "Credenciales incorrectas";
+    }
 }
-?>

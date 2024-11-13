@@ -4,10 +4,10 @@ if (isset($_GET['menu'])) {
         require_once './Vistas/Principal/landing-page.php';
     }
     if ($_GET['menu'] == "login") {
-        require_once './Vistas/Login/login.php'; // Llama al formulario de login
+        require_once './Vistas/Login/login.php';
     }
     if ($_GET['menu'] == "register") {
-        require_once './Vistas/Login/register.php'; // Llama al formulario de registro
+        require_once './Vistas/Login/register.php';
     }
     if ($_GET['menu'] == "kebabs") {
         require_once './Vistas/Mantenimiento/kebabs.php';
@@ -17,6 +17,9 @@ if (isset($_GET['menu'])) {
     }
     if ($_GET['menu'] == "contacto") {
         require_once './Vistas/mantenimiento/mantenimiento.php';
+    }
+    if ($_GET['menu'] == "insertarIngrediente") {
+        require_once './Vistas/mantenimiento/InsertarIngrediente.php';
     }
 } else {
     require_once './Vistas/Principal/landing-page.php';

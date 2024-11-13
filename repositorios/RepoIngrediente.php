@@ -13,7 +13,7 @@ class RepoIngrediente{
             $ingrediente->getAlergenos(),
             $ingrediente->getPrecio(),
             $ingrediente->getDescripcion(),
-            $ingrediente->getFoto(),
+            $ingrediente->getFoto()
         ]);
         return $ingrediente;
     }

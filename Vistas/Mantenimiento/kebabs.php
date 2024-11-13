@@ -1,3 +1,3 @@
 <?php
-echo "Estos son nuestros kebabs, los kebabs se componen del codigo 45"
+echo "Listado de kebabs";
 ?>
