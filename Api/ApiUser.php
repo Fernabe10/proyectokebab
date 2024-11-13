@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST')
 }
 elseif ($_SERVER['REQUEST_METHOD']=='GET')
 {
-    getAllUsers();
+    obtenerUsuarios();
 }
 elseif ($_SERVER['REQUEST_METHOD']=='DELETE')
 {
@@ -45,10 +45,28 @@ function registrarUsuario(){
 
 }
 
-function getAllUsers(){
+function obtenerUsuarios(){
     $repoUsuario = new RepoUsuario();
-    $resultado = $repoUsuario->getAllUsers();
+    $usuarios = $repoUsuario->getAllUsers(); 
+    
+    $resultado = [];
+    foreach ($usuarios as $usuario) {
+        
+        $resultado[] = [
+            'id' => $usuario->getId(),
+            'nombre' => $usuario->getNombre(),
+            'contrasena' => $usuario->getContrasena(),
+            'correo' => $usuario->getCorreo(),
+            'direccion' => $usuario->getDireccion(),
+            'monedero' => $usuario->getMonedero(),
+            'rol' => $usuario->getRol(),
+            'foto' => $usuario->getFoto()
+        ];
+    }
 
+   
+    header('Content-Type: application/json');
+    echo json_encode($resultado);
 }
 
 function eliminarUsuario(){
