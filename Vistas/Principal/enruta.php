@@ -21,6 +21,9 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "insertarIngrediente") {
         require_once './Vistas/mantenimiento/InsertarIngrediente.php';
     }
+    if ($_GET['menu'] == "gestionUsuarios") {
+        require_once './Vistas/mantenimiento/GestionUsuarios.php';
+    }
 } else {
     require_once './Vistas/Principal/landing-page.php';
 }
