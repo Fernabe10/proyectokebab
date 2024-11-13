@@ -1,11 +1,15 @@
 <?php
+
+require_once '../cargadores/autocargador.php';
+
+
 if ($_SERVER['REQUEST_METHOD']=='POST')
 {
     registrarUsuario();
 }
 elseif ($_SERVER['REQUEST_METHOD']=='GET')
 {
-
+    getAllUsers();
 }
 elseif ($_SERVER['REQUEST_METHOD']=='DELETE')
 {
@@ -18,10 +22,6 @@ elseif ($_SERVER['REQUEST_METHOD']=='PUT')
 
 
 function registrarUsuario(){
-    require_once '../cargadores/autocargador.php';
-
-
-
     $nombre = $_POST['nombre'];
     $contrasena = $_POST['contrasena'];
     $correo = $_POST['correo'];
@@ -34,16 +34,26 @@ function registrarUsuario(){
         $foto = base64_encode($fotoContenido);
     }
 
-
     $usuario = new User(null, $nombre, $contrasena, $correo, $direccion, $monedero, $rol, $foto);
-
 
     $repoUsuario = new RepoUsuario();
     $resultado = $repoUsuario->insertarUsuario($usuario);
 
-
     if ($resultado) {
         header("Location: ../index.php");
     }
+
+}
+
+function getAllUsers(){
+    $repoUsuario = new RepoUsuario();
+    $resultado = $repoUsuario->getAllUsers();
+
+}
+
+function eliminarUsuario(){
+    
+
+
 }
 ?>

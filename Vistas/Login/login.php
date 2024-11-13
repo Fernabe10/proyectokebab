@@ -4,7 +4,7 @@
 
 <h1>Formulario de Inicio de Sesión</h1>
 
-<form action="controladores/LoginUser.php" method="POST">
+<form action="Api/ApiSesion.php" method="POST">
     <div>
         <label for="correo">Correo Electrónico:</label>
         <input type="email" name="email" required>

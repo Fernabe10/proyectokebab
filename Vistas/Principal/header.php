@@ -16,14 +16,15 @@ Sesion::iniciarSesion();
             <li><a href="?menu=contacto">Contacto</a></li>
 
             <?php
-            // Mostrar opciones adicionales si el usuario es admin
+            //admin
             if (Sesion::leer('rol') === 'admin') {
                 echo '<li><a href="?menu=gestionUsuarios">Gestión de Usuarios</a></li>';
                 echo '<li><a href="?menu=insertarIngrediente">Insertar un Ingrediente</a></li>';
             } elseif (Sesion::leer('rol') === 'cliente') {
-                // Opciones exclusivas para clientes
+                //cliente
                 echo '<li><a href="?menu=misPedidos">Mis Pedidos</a></li>';
                 echo '<li><a href="?menu=perfil">Mi Perfil</a></li>';
+                echo '<li><a href="?menu=monedero">Monedero</a></li>';
             }
             ?>
         </ul>

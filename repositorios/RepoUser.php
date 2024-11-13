@@ -20,6 +20,27 @@ class RepoUsuario {
         return $usuario;
     }
 
+    public function getAllUsers() {
+        $stmt = $this->con->prepare("SELECT * FROM users");
+        $stmt->execute();
+        
+        $usuarios = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $usuarios[] = new User(
+                $row['id'],
+                $row['nombre'],
+                $row['contrasena'],
+                $row['correo'],
+                $row['direccion'],
+                $row['monedero'],
+                $row['rol'],
+                $row['foto']
+            );
+        }
+        
+        return $usuarios;
+    }
+
     public function modificarUsuario(User $usuario) {
         
         $stmt = $this->con->prepare("UPDATE users SET nombre = :nombre, contrasena = :contrasena, correo = :correo, direccion = :direccion, monedero = :monedero, rol = :rol, foto = :foto WHERE id = :id");
@@ -88,10 +109,6 @@ class RepoUsuario {
         
         return $stmt->rowCount() > 0; 
     }
-
-
-
-    
 
 
 }

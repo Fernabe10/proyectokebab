@@ -3,7 +3,7 @@
 </head>
 
 <h1>Formulario de registro</h1>
-<form action="controladores/RegisterUser.php" method="POST" enctype="multipart/form-data">
+<form action="Api/ApiUser.php" method="POST" enctype="multipart/form-data">
     <div>
         <label for="foto">Foto:</label>
         <input type="file" name="foto" accept="image/*" required>
