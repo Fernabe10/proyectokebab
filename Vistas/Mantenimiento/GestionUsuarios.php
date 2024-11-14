@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestión de Usuarios</title>
-    <script src="js/rellenarTablaUsuarios.js"></script>
+    <script src="js/rellenarTablaUsuarios.js" defer></script>
 </head>
 <body>
     <h1>Gestión de Usuarios</h1>
     
-    
-    <table id="tablaUsuarios">
+    <table border="1" class="nombres">
         <thead>
             <tr>
                 <th>ID</th>
@@ -21,12 +20,9 @@
                 <th>Foto</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="nombres">
             
         </tbody>
     </table>
-
-    
-    <script src="js/cargarUsuarios.js"></script>
 </body>
 </html>

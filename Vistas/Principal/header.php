@@ -11,15 +11,35 @@ Sesion::iniciarSesion();
     <nav>
         <ul>
             <li><a href="?menu=inicio">Inicio</a></li>
-            <li><a href="?menu=kebabs">Kebabs</a></li>
-            <li><a href="?menu=alergenos">Alérgenos</a></li>
+            <div class="dropdown">
+                <li>Kebabs</li>
+                <div class="dropdown-content">
+                        <a href="?menu=kebabdelacasa">De la casa</a><br>
+                        <a href="?menu=kebabpersonalizado">Personalizado</a>
+                        </div>
+            </div>
             <li><a href="?menu=contacto">Contacto</a></li>
 
             <?php
             //admin
             if (Sesion::leer('rol') === 'admin') {
                 echo '<li><a href="?menu=gestionUsuarios">Gestión de Usuarios</a></li>';
-                echo '<li><a href="?menu=insertarIngrediente">Insertar un Ingrediente</a></li>';
+                echo '<div class="dropdown">
+                <li>Gestionar Ingredientes</li>
+                    <div class="dropdown-content">
+                        <a href="?menu=insertarIngrediente">Insertar Ingrediente</a><br>
+                        <a href="?menu=borrarIngrediente">Borrar Ingrediente</a>
+                        <a href="?menu=verIngredientes">Ver Ingredientes</a>
+                        </div>
+                    </div>';
+                    echo '<div class="dropdown">
+                    <li>Gestionar Kebabs</li>
+                    <div class="dropdown-content">
+                        <a href="?menu=insertarKebab">Insertar Kebab</a><br>
+                        <a href="?menu=verKebabs">Ver Kebabs</a>
+                        </div>
+                    </div>';
+                
             } elseif (Sesion::leer('rol') === 'cliente') {
                 //cliente
                 echo '<li><a href="?menu=misPedidos">Mis Pedidos</a></li>';
@@ -31,7 +51,7 @@ Sesion::iniciarSesion();
     </nav>
     <div>
         <?php if (Sesion::leer('usuario')): ?>
-            <span>Bienvenido, <?php echo Sesion::leer('usuario'); ?></span>
+            <span><?php echo Sesion::leer('usuario'); ?></span>
             <a href="helpers/logout.php">Cerrar Sesión</a>
         <?php else: ?>
             <a href="?menu=login">Iniciar Sesión</a>
@@ -40,6 +60,5 @@ Sesion::iniciarSesion();
     </div>
 </header>
 
-
-
+                
 
