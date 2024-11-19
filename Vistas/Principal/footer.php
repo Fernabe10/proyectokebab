@@ -10,9 +10,9 @@
             <p>📞 Teléfono: +123 456 789</p>
             <p>📍 Dirección: Calle Kebab #123, Ciudad</p>
             <div class="redes">
-                <a href="#" aria-label="Facebook"><img src="images/facebook.png" alt="Facebook"></a>
-                <a href="#" aria-label="Instagram"><img src="images/instagram.png" alt="Instagram"></a>
-                <a href="#" aria-label="Twitter"><img src="images/twitter.png" alt="Twitter"></a>
+                <a href="https://www.facebook.com/" aria-label="Facebook"><img src="images/facebook.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com/" aria-label="Instagram"><img src="images/instagram.png" alt="Instagram"></a>
+                <a href="https://www.x.com/" aria-label="Twitter"><img src="images/twitter.png" alt="Twitter"></a>
             </div>
         </div>
     </div>

@@ -5,11 +5,6 @@ require_once '../cargadores/autocargador.php';
 // Iniciar la sesión antes de cualquier operación
 Sesion::iniciarSesion();
 
-if (!Sesion::existe('usuario_id')) {
-    http_response_code(401); // Código de error para no autorizado
-    echo "Usuario no autenticado";
-    exit;
-}
 
 // Obtener el usuario ID de la sesión
 $usuarioId = Sesion::leer('usuario_id');
@@ -55,7 +50,6 @@ function agregarFondos($usuarioId) {
     $resultado = $repoUsuario->recargarMonedero($usuarioId, $balance);
 
     if ($resultado) {
-        // Actualizar el saldo en la sesión
         $nuevoSaldo = $repoUsuario->traerMonedero($usuarioId);
         Sesion::escribir('monedero', $nuevoSaldo);
         echo "Fondos agregados exitosamente. Nuevo saldo: " . number_format($nuevoSaldo, 2) . " €";

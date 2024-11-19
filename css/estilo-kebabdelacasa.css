@@ -24,9 +24,6 @@ main {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     max-height: 320px;
     width: 100%;
     max-width: 350px;

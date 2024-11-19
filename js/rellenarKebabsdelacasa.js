@@ -11,12 +11,13 @@ window.addEventListener("load", function () {
                     const kebabCard = document.createElement("div");
 
                     kebabCard.innerHTML = `
-                        <img src="${kebab.foto}" alt="${kebab.nombre}">
+                        <img src="data:image/jpeg;base64,${kebab.foto}" alt="Foto de ${kebab.nombre}">
                         <h2>${kebab.nombre}</h2>
                         <p>${kebab.descripcion}</p>
+                        <p>Ingredientes:</p>
                         <span>€${kebab.precio}</span>
                         <button>Pedir</button>
-                        <button>Editar</button>
+                        <button>Personalizar</button>
                     `;
                     kebabContainer.appendChild(kebabCard);
                 });
