@@ -111,15 +111,18 @@ class RepoUsuario {
     }
 
     public function traerMonedero($usuarioId) {
-        $stmt = $this->conexion->prepare("SELECT monedero FROM users WHERE id = ?");
+        if (!is_numeric($usuarioId)) {
+            throw new InvalidArgumentException("El ID del usuario debe ser un número.");
+        }
+        $stmt = $this->con->prepare("SELECT monedero FROM users WHERE id = ?");
         $stmt->execute([$usuarioId]);
-
+    
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $resultado ? $resultado['monedero'] : 0;
+        return $resultado ? $resultado['monedero'] : null;
     }
 
     public function recargarMonedero($usuarioId, $monto) {
-        $stmt = $this->conexion->prepare("UPDATE users SET monedero = monedero + ? WHERE id = ?");
+        $stmt = $this->con->prepare("UPDATE users SET monedero = monedero + ? WHERE id = ?");
         return $stmt->execute([$monto, $usuarioId]);
     }
 

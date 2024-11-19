@@ -15,7 +15,8 @@ window.addEventListener("load", function () {
                         <h2>${kebab.nombre}</h2>
                         <p>${kebab.descripcion}</p>
                         <span>€${kebab.precio}</span>
-                        <button>Ordenar ahora</button>
+                        <button>Pedir</button>
+                        <button>Editar</button>
                     `;
                     kebabContainer.appendChild(kebabCard);
                 });

@@ -6,37 +6,29 @@ require_once '../cargadores/autocargador.php';
 Sesion::iniciarSesion();
 
 if (!Sesion::existe('usuario_id')) {
-    echo json_encode(["success" => false, "message" => "Usuario no autenticado."]);
+    http_response_code(401); // Código de error para no autorizado
+    echo "Usuario no autenticado";
     exit;
 }
 
 // Obtener el usuario ID de la sesión
 $usuarioId = Sesion::leer('usuario_id');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD']=='POST')
+{
     agregarFondos($usuarioId);
-} elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    traerMonedero($usuarioId);
-} else {
-    echo json_encode(["success" => false, "message" => "Método no permitido."]);
-    exit;
 }
+elseif ($_SERVER['REQUEST_METHOD']=='GET')
+{
+    traerMonedero();
+}
+elseif ($_SERVER['REQUEST_METHOD']=='DELETE')
+{
 
-function agregarFondos($usuarioId) {
-    $balance = $_POST['balance'];
-    if ($balance === null || !is_numeric($balance) || $balance <= 0) {
-        echo json_encode(["success" => false, "message" => "Monto inválido."]);
-        exit;
-    }
-
-    $repoUsuario = new RepoUsuario();
-    $resultado = $repoUsuario->recargarMonedero($usuarioId, $balance);
-
-    if ($resultado) {
-        echo json_encode(["success" => true, "message" => "Fondos agregados exitosamente."]);
-    } else {
-        echo json_encode(["success" => false, "message" => "Error al recargar el monedero."]);
-    }
+}
+elseif ($_SERVER['REQUEST_METHOD']=='PUT')
+{
+    
 }
 
 function traerMonedero($usuarioId) {
@@ -44,12 +36,32 @@ function traerMonedero($usuarioId) {
     $monedero = $repoUsuario->traerMonedero($usuarioId);
 
     if ($monedero !== null) {
-        echo json_encode(["success" => true, "saldo" => $monedero]);
+        header('Content-Type: text/plain'); // Indicamos que el contenido es texto plano
+        echo number_format($monedero, 2, '.', ''); // Asegúrate de devolver un número formateado
     } else {
-        echo json_encode(["success" => false, "message" => "Error al obtener el saldo del monedero."]);
+        http_response_code(500); // Error interno del servidor
+        echo "0.00"; // Valor predeterminado si ocurre un error
     }
 }
 
-?>
+function agregarFondos($usuarioId) {
+    $balance = $_POST['balance'];
+    if ($balance === null || !is_numeric($balance) || $balance <= 0) {
+        echo "Monto inválido.";
+        exit;
+    }
+
+    $repoUsuario = new RepoUsuario();
+    $resultado = $repoUsuario->recargarMonedero($usuarioId, $balance);
+
+    if ($resultado) {
+        // Actualizar el saldo en la sesión
+        $nuevoSaldo = $repoUsuario->traerMonedero($usuarioId);
+        Sesion::escribir('monedero', $nuevoSaldo);
+        echo "Fondos agregados exitosamente. Nuevo saldo: " . number_format($nuevoSaldo, 2) . " €";
+    } else {
+        echo "Error al recargar el monedero.";
+    }
+}
 
 

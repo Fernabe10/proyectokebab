@@ -1,6 +1,6 @@
 <?php
 Sesion::iniciarSesion();
-var_dump($_SESSION);
+$saldo = Sesion::leer('monedero');
 ?>
 
 <!DOCTYPE html>
@@ -9,21 +9,27 @@ var_dump($_SESSION);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monedero</title>
-    <script src="js/monedero.js" defer></script>
+    <link rel="stylesheet" href="css/estilo-monedero.css">
 </head>
 <body>
     <h1>Tu Monedero</h1>
-    <div>
-        <h2>Saldo disponible:</h2>
-        <span id="saldo"></span>
-    </div>
-    <div>
-        <h2>Recargar Monedero</h2>
-        <form action="Api/Api-Monedero.php" method="POST">
-            <label>Introducir balance:</label>
-            <input type="number" step="0.01" name="balance" required>
-            <button type="submit">Añadir</button>
-        </form>
+    <div id="container">
+        
+        <div>
+            <h2>Saldo disponible:</h2>
+            <span id="saldo"><?= number_format($saldo, 2) ?> €</span>
+        </div>
+
+        
+        <div>
+            <h2>Recargar Monedero</h2>
+            <form action="Api/Api-Monedero.php" method="POST">
+                <label for="balance">Introducir balance:</label>
+                <input id="balance" type="number" step="0.01" name="balance" required>
+                <button type="submit">Añadir</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
+

@@ -33,10 +33,14 @@ function loginUsuario()
         $usuario = $repoUsuario->buscarPorCorreo($email);
     
         if ($usuario && $password === $usuario->getContrasena()) { 
-            // Guardar los datos en la sesión
+            
             Sesion::escribir('usuario_id', $usuario->getId());
             Sesion::escribir('usuario', $usuario->getNombre());
             Sesion::escribir('rol', $usuario->getRol());  
+            
+
+            $monedero = $usuario->getMonedero();
+            Sesion::escribir('monedero', $monedero);
             
             header('Location: ../index.php');
             exit;
@@ -45,3 +49,4 @@ function loginUsuario()
         }
     }
 }
+

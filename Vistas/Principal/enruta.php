@@ -30,6 +30,9 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "kebabdelacasa") {
         require_once './Vistas/Principal/kebabdelacasa.php';
     }
+    if ($_GET['menu'] == "kebabpersonalizado") {
+        require_once './Vistas/Principal/kebabpersonalizado.php';
+    }
     if ($_GET['menu'] == "monedero") {
         require_once './Vistas/Principal/monedero.php';
     }
