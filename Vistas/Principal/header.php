@@ -28,7 +28,6 @@ Sesion::iniciarSesion();
                 <li>Gestionar Ingredientes</li>
                     <div class="dropdown-content">
                         <a href="?menu=insertarIngrediente">Insertar Ingrediente</a><br>
-                        <a href="?menu=borrarIngrediente">Borrar Ingrediente</a>
                         <a href="?menu=verIngredientes">Ver Ingredientes</a>
                         </div>
                     </div>';

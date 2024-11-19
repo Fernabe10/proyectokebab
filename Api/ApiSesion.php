@@ -23,8 +23,8 @@ elseif ($_SERVER['REQUEST_METHOD']=='PUT')
 
 
 
-function loginUsuario(){
-
+function loginUsuario()
+{
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -33,6 +33,8 @@ function loginUsuario(){
         $usuario = $repoUsuario->buscarPorCorreo($email);
     
         if ($usuario && $password === $usuario->getContrasena()) { 
+            // Guardar los datos en la sesión
+            Sesion::escribir('usuario_id', $usuario->getId());
             Sesion::escribir('usuario', $usuario->getNombre());
             Sesion::escribir('rol', $usuario->getRol());  
             

@@ -110,6 +110,19 @@ class RepoUsuario {
         return $stmt->rowCount() > 0; 
     }
 
+    public function traerMonedero($usuarioId) {
+        $stmt = $this->conexion->prepare("SELECT monedero FROM users WHERE id = ?");
+        $stmt->execute([$usuarioId]);
+
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado ? $resultado['monedero'] : 0;
+    }
+
+    public function recargarMonedero($usuarioId, $monto) {
+        $stmt = $this->conexion->prepare("UPDATE users SET monedero = monedero + ? WHERE id = ?");
+        return $stmt->execute([$monto, $usuarioId]);
+    }
+
 
 }
 ?>

@@ -3,13 +3,15 @@ class Kebab{
     private $id;
     private $nombre;
     private $foto;
+    private $descripcion;
     private $precio_base;
 
 
-    public function __construct($id, $nombre, $foto, $precio_base){
+    public function __construct($id, $nombre, $foto, $descripcion, $precio_base){
         $this->id = $id;
         $this->nombre = $nombre;
         $this->foto = $foto;
+        $this->descripcion = $descripcion;
         $this->precio_base = $precio_base;
     }
 
@@ -24,6 +26,10 @@ class Kebab{
 
     public function getFoto() {
         return $this->foto;
+    }
+
+    public function getDescripcion() {
+        return $this->descripcion;
     }
 
     public function getPrecioBase() {
@@ -43,13 +49,17 @@ class Kebab{
         $this->foto = $foto;
     }
 
+    public function setDescripcion($descripcion) {
+        $this->descripcion = $descripcion;
+    }
+
     public function setPrecioBase($precio_base) {
         $this->precio_base = $precio_base;
     }
 
     
     public function toString() {
-        return "ID: {$this->id}, Nombre: {$this->nombre}, Foto: {$this->foto}, Precio Base: {$this->precio_base}";
+        return "ID: {$this->id}, Nombre: {$this->nombre}, Foto: {$this->foto}, Descripcion {$this->descripcion}, Precio Base: {$this->precio_base}";
     }
 }
 ?>

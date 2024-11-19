@@ -7,10 +7,9 @@ class RepoIngrediente{
     }
 
     public function insertarIngrediente(Ingrediente $ingrediente) {
-        $stmt = $this->con->prepare("INSERT INTO Ingrediente (nombre, alergenos, precio, descripcion, foto) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $this->con->prepare("INSERT INTO Ingrediente (nombre, precio, descripcion, foto) VALUES (?, ?, ?, ?)");
         $stmt->execute([
             $ingrediente->getNombre(),
-            $ingrediente->getAlergenos(),
             $ingrediente->getPrecio(),
             $ingrediente->getDescripcion(),
             $ingrediente->getFoto()
@@ -20,11 +19,10 @@ class RepoIngrediente{
 
     public function modificarIngrediente(Ingrediente $ingrediente) {
         
-        $stmt = $this->con->prepare("UPDATE Ingrediente SET nombre = :nombre, alergenos = :alergenos, precio = :precio, descripcion = :descripcion, foto = :foto WHERE id = :id");
+        $stmt = $this->con->prepare("UPDATE Ingrediente SET nombre = :nombre, precio = :precio, descripcion = :descripcion, foto = :foto WHERE id = :id");
         
         $stmt->execute([
             'nombre' => $ingrediente->getNombre(),
-            'alergenos' => $ingrediente->getAlergenos(),
             'precio' => $ingrediente->getPrecio(),
             'descripcion' => $ingrediente->getDescripcion(),
             'foto' => $ingrediente->getFoto(),
@@ -44,7 +42,6 @@ class RepoIngrediente{
             return new Ingrediente(
                 $resultado['id'],
                 $resultado['nombre'],
-                $resultado['alergenos'],
                 $resultado['precio'],
                 $resultado['descripcion'],
                 $resultado['foto']
@@ -60,5 +57,58 @@ class RepoIngrediente{
         
         return $stmt->rowCount() > 0; 
     }
+
+    public function getLastId() {
+        
+        $stmt = $this->con->prepare("SELECT MAX(id) as ultima_id FROM Ingrediente");
+        $stmt->execute();
+        
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($resultado && isset($resultado['ultima_id'])) {
+            return $resultado['ultima_id'];
+        }
+    
+        
+        return null;
+    }
+
+    public function getAllIngredientes() {
+        $stmt = $this->con->prepare("SELECT id, nombre, precio, descripcion, foto FROM Ingrediente");
+        $stmt->execute();
+    
+        $ingredientes = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $ingredientes[] = new Ingrediente(
+                $row['id'],
+                $row['nombre'],
+                $row['precio'],
+                $row['descripcion'],
+                $row['foto']
+            );
+        }
+    
+        return $ingredientes;
+    }
+
+    public function obtenerIngredientePorNombre($nombre) {
+        $stmt = $this->con->prepare("SELECT * FROM Ingrediente WHERE nombre = :nombre");
+        $stmt->execute(['nombre' => $nombre]);
+        
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($resultado) {
+            return new Ingrediente(
+                $resultado['id'],
+                $resultado['nombre'],
+                $resultado['precio'],
+                $resultado['descripcion'],
+                $resultado['foto']
+            );
+        } else {
+            return null; // Si no se encuentra el ingrediente
+        }
+    }
+    
 }
 ?>

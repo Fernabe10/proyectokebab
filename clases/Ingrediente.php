@@ -2,15 +2,13 @@
 class Ingrediente {
     private $id;
     private $nombre;
-    private $alergenos;
     private $precio;
     private $descripcion;
     private $foto;
 
-    public function __construct($id, $nombre, $alergenos, $precio, $descripcion, $foto) {
+    public function __construct($id, $nombre, $precio, $descripcion, $foto) {
         $this->id = $id;
         $this->nombre = $nombre;
-        $this->alergenos = $alergenos;
         $this->precio = $precio;
         $this->descripcion = $descripcion;
         $this->foto = $foto;
@@ -23,10 +21,6 @@ class Ingrediente {
 
     public function getNombre() {
         return $this->nombre;
-    }
-
-    public function getAlergenos() {
-        return $this->alergenos;
     }
 
     public function getPrecio() {
@@ -46,10 +40,6 @@ class Ingrediente {
         $this->nombre = $nombre;
     }
 
-    public function setAlergenos($alergenos) {
-        $this->alergenos = $alergenos;
-    }
-
     public function setPrecio($precio) {
         $this->precio = $precio;
     }
@@ -64,7 +54,7 @@ class Ingrediente {
 
     // Método para mostrar información del Ingrediente
     public function toString() {
-        return "ID: {$this->id} - Nombre: {$this->nombre} - Alergenos: {$this->alergenos} - Precio: {$this->precio} - Descripción: {$this->descripcion} - Foto: {$this->foto}";
+        return "ID: {$this->id} - Nombre: {$this->nombre} - Precio: {$this->precio} - Descripción: {$this->descripcion} - Foto: {$this->foto}";
     }
 }
 ?>

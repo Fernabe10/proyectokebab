@@ -24,6 +24,15 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "gestionUsuarios") {
         require_once './Vistas/mantenimiento/GestionUsuarios.php';
     }
+    if ($_GET['menu'] == "insertarKebab") {
+        require_once './Vistas/mantenimiento/InsertarKebab.php';
+    }
+    if ($_GET['menu'] == "kebabdelacasa") {
+        require_once './Vistas/Principal/kebabdelacasa.php';
+    }
+    if ($_GET['menu'] == "monedero") {
+        require_once './Vistas/Principal/monedero.php';
+    }
 } else {
     require_once './Vistas/Principal/landing-page.php';
 }
