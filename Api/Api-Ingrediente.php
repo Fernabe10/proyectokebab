@@ -84,7 +84,6 @@ function InsertarIngrediente() {
 function traerIngredientes(){
     $repoIngrediente = new RepoIngrediente();
     $ingredientes = $repoIngrediente->getAllIngredientes();
-
     $resultado = [];
     foreach($ingredientes as $ingrediente){
         
@@ -93,9 +92,10 @@ function traerIngredientes(){
             'nombre' => $ingrediente->getNombre()
         ];
     }
-
     
     echo json_encode($resultado);
 }
+
+
 
 

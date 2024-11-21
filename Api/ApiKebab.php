@@ -24,8 +24,6 @@ elseif ($_SERVER['REQUEST_METHOD']=='PUT')
 
 
 function insertarKebab() {
-    #require_once '../cargadores/autocargador.php';
-
     
     $nombre = $_POST['nombre'];
     $precio = $_POST['precio'];
@@ -68,26 +66,35 @@ function insertarKebab() {
 }
 
 function traerKebabs(){
-    #require_once '../cargadores/autocargador.php';
-
     $repoKebab = new RepoKebab();
     $kebabs = $repoKebab->getAllKebabs();
 
     $resultado = [];
-    foreach($kebabs as $kebab){
+    foreach ($kebabs as $kebab) {
         
+        $repoKebabIngrediente = new RepoKebabIngrediente();
+        $ingredientes = $repoKebabIngrediente->getIngredientesByKebabId($kebab['id']);
+
+        $ingredientesList = [];
+        foreach ($ingredientes as $ingrediente) {
+            $ingredientesList[] = $ingrediente['nombre'];
+        }
+
         $resultado[] = [
-            'id' => $kebab->getId(),
-            'nombre' => $kebab->getNombre(),
-            'foto' => $kebab->getFoto(),
-            'descripcion' => $kebab->getDescripcion(),
-            'precio' => $kebab->getPrecioBase()
+            'id' => $kebab['id'],
+            'nombre' => $kebab['nombre'],
+            'foto' => $kebab['foto'],
+            'descripcion' => $kebab['descripcion'],
+            'precio' => $kebab['precio_base'],
+            'ingredientes' => $ingredientesList
         ];
     }
 
-    
     echo json_encode($resultado);
 }
+
+
+
 
 
 

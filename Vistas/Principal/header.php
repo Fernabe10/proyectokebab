@@ -2,7 +2,9 @@
 require_once 'helpers/sesion.php';
 Sesion::iniciarSesion();
 ?>
-
+<head>
+    <link rel="stylesheet" href="css/estilo-header.css">    
+</head>
 <header>
     <div>
         <img src="images/logo.png" alt="Kebab Express Logo">

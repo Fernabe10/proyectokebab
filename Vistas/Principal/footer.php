@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" href="css/estilo-footer.css">
+</head>
+
 <footer>
     <div>
         <div>

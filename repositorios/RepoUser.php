@@ -42,22 +42,29 @@ class RepoUsuario {
     }
 
     public function modificarUsuario(User $usuario) {
-        
-        $stmt = $this->con->prepare("UPDATE users SET nombre = :nombre, contrasena = :contrasena, correo = :correo, direccion = :direccion, monedero = :monedero, rol = :rol, foto = :foto WHERE id = :id");
-        
-        $stmt->execute([
+        $sql = "UPDATE users 
+                SET nombre = :nombre, contrasena = :contrasena, correo = :correo, direccion = :direccion";
+        $params = [
             'nombre' => $usuario->getNombre(),
             'contrasena' => $usuario->getContrasena(),
             'correo' => $usuario->getCorreo(),
             'direccion' => $usuario->getDireccion(),
-            'monedero' => $usuario->getMonedero(),
-            'rol' => $usuario->getRol(),
-            'foto' => $usuario->getFoto(),
             'id' => $usuario->getId(),
-        ]);
-
-        return $usuario;
+        ];
+    
+        if ($usuario->getFoto()) {
+            $sql .= ", foto = :foto";
+            $params['foto'] = $usuario->getFoto();
+        }
+    
+        $sql .= " WHERE id = :id";
+        $stmt = $this->con->prepare($sql);
+        $stmt->execute($params);
+    
+        return $stmt->rowCount() > 0;
     }
+    
+
 
     public function buscarPorId($id) {
         $stmt = $this->con->prepare("SELECT * FROM users WHERE id = :id");

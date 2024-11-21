@@ -1,5 +1,5 @@
-  
-  const fileInput = document.getElementById("fileInput");
+  window.addEventListener("load",function(){
+    const fileInput = document.getElementById("fileInput");
   const preview = document.getElementById("preview");
 
   
@@ -23,3 +23,5 @@
           preview.src = "";
       }
   });
+  })
+  

@@ -77,20 +77,14 @@ class RepoKebab{
     }
 
     public function getAllKebabs() {
-        $stmt = $this->con->prepare("SELECT id, nombre, foto, descripcion, precio_base FROM Kebab");
+        $stmt = $this->con->prepare("SELECT * FROM kebab");
         $stmt->execute();
-    
+
         $kebabs = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $kebabs[] = new Kebab(
-                $row['id'],
-                $row['nombre'],
-                $row['foto'],
-                $row['descripcion'],
-                $row['precio_base']
-            );
+            // Aquí devolvemos un array, no un objeto
+            $kebabs[] = $row;
         }
-    
         return $kebabs;
     }
 

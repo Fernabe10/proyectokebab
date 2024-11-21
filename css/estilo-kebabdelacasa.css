@@ -4,43 +4,38 @@ body {
     background-color: #f8f8f8;
 }
 
-main {
-    width: 100%;
-}
-
 #kebabContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-    padding: 10px;
-    width: 100%;
+    padding: 20px;
     box-sizing: border-box;
     justify-items: center;
+    width: 100%;
 }
 
 #kebabContainer > div {
     background-color: white;
-    padding: 10px;
+    padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    max-height: 320px;
-    width: 100%;
-    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 20em;
 }
-
 
 #kebabContainer img {
     max-width: 100%;
     border-radius: 8px 8px 0 0;
     object-fit: cover;
     height: 120px;
-    margin-bottom: 10px;
 }
 
 #kebabContainer h2 {
     font-size: 1.2em;
-    margin: 10px 0 8px;
     color: #333;
 }
 
@@ -48,15 +43,33 @@ main {
     font-size: 0.9em;
     color: #666;
     margin-bottom: 10px;
-    line-height: 1.3;
 }
 
 #kebabContainer span {
     font-size: 1em;
     font-weight: bold;
     color: #28a745;
-    margin-bottom: 8px;
     display: block;
+}
+
+#kebabContainer h3 {
+    font-size: 1em;
+    color: #555;
+}
+
+#kebabContainer ul {
+    list-style-type: disc;
+    margin: 0;
+    padding: 0 20px;
+    max-height: 100px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+#kebabContainer ul li {
+    font-size: 0.9em;
+    color: #444;
+    margin-bottom: 4px;
 }
 
 #kebabContainer button {
@@ -67,10 +80,12 @@ main {
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.9em;
-    transition: background-color 0.3s ease;
     align-self: center;
 }
 
-#kebabContainer button:hover {
-    background-color: #218838;
+#kebabContainer .buttons-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
 }

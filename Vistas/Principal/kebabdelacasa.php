@@ -8,9 +8,8 @@
     <script src="js/rellenarKebabsdelacasa.js"></script>
 </head>
 <body>
-    <main>
-        <div id="kebabContainer"></div>
-    </main>
+    <h1>Kebabs de la casa</h1>
+    <div id="kebabContainer"></div>
     
 </body>
 </html>

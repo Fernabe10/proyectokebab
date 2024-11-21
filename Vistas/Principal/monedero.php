@@ -3,6 +3,7 @@ Sesion::iniciarSesion();
 $saldo = Sesion::leer('monedero');
 ?>
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

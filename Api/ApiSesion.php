@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST')
 }
 elseif ($_SERVER['REQUEST_METHOD']=='GET')
 {
-    
+    traerDatosUsuarioLogeado();
 }
 elseif ($_SERVER['REQUEST_METHOD']=='DELETE')
 {
@@ -47,6 +47,38 @@ function loginUsuario()
         } else {
             echo "Credenciales incorrectas";
         }
+    }
+}
+function traerDatosUsuarioLogeado()
+{
+    Sesion::iniciarSesion();
+    
+    
+    if (!Sesion::existe('usuario_id')) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Usuario no autenticado']);
+        return;
+    }
+
+    
+    $usuarioId = Sesion::leer('usuario_id');
+    $repoUsuario = new RepoUsuario();
+    $usuario = $repoUsuario->buscarPorId($usuarioId);
+
+    if ($usuario) {
+        
+        echo json_encode([
+            'id' => $usuario->getId(),
+            'nombre' => $usuario->getNombre(),
+            'correo' => $usuario->getCorreo(),
+            'monedero' => $usuario->getMonedero(),
+            'rol' => $usuario->getRol(),
+            'direccion' => $usuario->getDireccion(),
+            'foto' => $usuario->getFoto()
+        ]);
+    } else {
+        http_response_code(404);
+        echo json_encode(['error' => 'Usuario no encontrado']);
     }
 }
 

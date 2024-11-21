@@ -9,8 +9,11 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "register") {
         require_once './Vistas/Login/register.php';
     }
-    if ($_GET['menu'] == "kebabs") {
-        require_once './Vistas/Mantenimiento/kebabs.php';
+    if ($_GET['menu'] == "perfil") {
+        require_once './Vistas/Principal/miperfil.php';
+    }
+    if ($_GET['menu'] == "verKebabs") {
+        require_once './Vistas/Mantenimiento/GestionKebabs.php';
     }
     if ($_GET['menu'] == "alergenos") {
         require_once './Vistas/Login/cerrarsesion.php';
@@ -24,6 +27,9 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "gestionUsuarios") {
         require_once './Vistas/mantenimiento/GestionUsuarios.php';
     }
+    if ($_GET['menu'] == "modificarPerfil") {
+        require_once './Vistas/mantenimiento/ModificarPerfil.php';
+    }
     if ($_GET['menu'] == "insertarKebab") {
         require_once './Vistas/mantenimiento/InsertarKebab.php';
     }
@@ -36,6 +42,7 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "monedero") {
         require_once './Vistas/Principal/monedero.php';
     }
+
 } else {
     require_once './Vistas/Principal/landing-page.php';
 }

@@ -61,5 +61,15 @@ class Kebab{
     public function toString() {
         return "ID: {$this->id}, Nombre: {$this->nombre}, Foto: {$this->foto}, Descripcion {$this->descripcion}, Precio Base: {$this->precio_base}";
     }
+
+    public function toArray() {
+        return [
+            'id' => $this->id,
+            'nombre' => $this->nombre,
+            'foto' => $this->foto,
+            'descripcion' => $this->descripcion,
+            'precio' => $this->precioBase
+        ];
+    }
 }
 ?>

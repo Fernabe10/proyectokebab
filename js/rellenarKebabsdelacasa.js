@@ -8,18 +8,26 @@ window.addEventListener("load", function () {
                 const kebabContainer = document.getElementById("kebabContainer");
 
                 kebabs.forEach((kebab) => {
-                    const kebabCard = document.createElement("div");
+                    const cajaKebab = document.createElement("div");
 
-                    kebabCard.innerHTML = `
+                    // Crear una lista de ingredientes
+                    const ingredientesList = kebab.ingredientes.map(ingrediente => {
+                        return `<li>${ingrediente}</li>`; 
+                    }).join('');
+
+                    cajaKebab.innerHTML = `
                         <img src="data:image/jpeg;base64,${kebab.foto}" alt="Foto de ${kebab.nombre}">
                         <h2>${kebab.nombre}</h2>
                         <p>${kebab.descripcion}</p>
-                        <p>Ingredientes:</p>
                         <span>€${kebab.precio}</span>
-                        <button>Pedir</button>
-                        <button>Personalizar</button>
+                        <h3>Ingredientes:</h3>
+                        <ul>${ingredientesList}</ul>
+                        <div class="buttons-container">
+                            <button>Pedir</button>
+                            <button>Personalizar</button>
+                        </div>
                     `;
-                    kebabContainer.appendChild(kebabCard);
+                    kebabContainer.appendChild(cajaKebab);
                 });
             })
             .catch((error) => {
