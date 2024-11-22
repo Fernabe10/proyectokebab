@@ -2,11 +2,9 @@
 require_once '../helpers/sesion.php';
 require_once '../cargadores/autocargador.php';
 
-// Iniciar la sesión antes de cualquier operación
 Sesion::iniciarSesion();
 
 
-// Obtener el usuario ID de la sesión
 $usuarioId = Sesion::leer('usuario_id');
 
 if ($_SERVER['REQUEST_METHOD']=='POST')
@@ -31,11 +29,8 @@ function traerMonedero($usuarioId) {
     $monedero = $repoUsuario->traerMonedero($usuarioId);
 
     if ($monedero !== null) {
-        header('Content-Type: text/plain'); // Indicamos que el contenido es texto plano
-        echo number_format($monedero, 2, '.', ''); // Asegúrate de devolver un número formateado
-    } else {
-        http_response_code(500); // Error interno del servidor
-        echo "0.00"; // Valor predeterminado si ocurre un error
+        header('Content-Type: text/plain');
+        echo number_format($monedero, 2, '.', ''); 
     }
 }
 

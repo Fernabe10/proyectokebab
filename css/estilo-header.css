@@ -14,7 +14,7 @@ header {
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 10%;
+    padding: 15px 5%;
     background-color: #ff6347;
     color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -23,12 +23,12 @@ header {
 header div:nth-child(1) {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
 header div:nth-child(1) img {
-    height: 40px;
+    height: 50px;
     width: auto;
-    margin-right: 10px;
 }
 
 header div:nth-child(1) span {
@@ -53,12 +53,24 @@ nav a:hover {
     color: #ffdfba;
 }
 
+header div:nth-child(3) {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header div:nth-child(3) span {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #fff;
+}
+
 header div:nth-child(3) a {
     background-color: #fff;
     color: #ff6347;
-    padding: 10px 20px;
+    padding: 8px 15px;
     border-radius: 5px;
-    font-weight: bold;
+    font-size: 1rem;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -68,26 +80,24 @@ header div:nth-child(3) a:hover {
     color: #ff6347;
 }
 
-.botonesnav{
-    width: 150px;
-}
-
-.dropdown{
+.dropdown {
     display: inline-block;
     position: relative;
-    
 }
-.dropdown-content{
+
+.dropdown-content {
     display: none;
     position: absolute;
-    width: 150px;
+    width: 160px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background-color: #ff6347;
-    
 }
 
-.dropdown:hover .dropdown-content{
+.dropdown:hover .dropdown-content {
     display: block;
-    
+}
+
+.botonesnav {
+    width: 160px;
 }

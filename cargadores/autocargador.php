@@ -17,6 +17,8 @@ class Autocargador
         require_once $raiz . 'clases/Ingrediente.php';
         require_once $raiz . 'clases/Kebab.php';
         require_once $raiz . 'clases/Alergeno.php';
+        require_once $raiz . 'clases/Pedido.php';
+        require_once $raiz . 'repositorios/RepoPedido.php';
         require_once $raiz . 'repositorios/RepoUser.php';
         require_once $raiz . 'repositorios/RepoIngrediente.php';
         require_once $raiz . 'repositorios/RepoKebab.php';

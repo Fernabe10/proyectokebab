@@ -40,6 +40,7 @@ Sesion::iniciarSesion();
                         <a href="?menu=verKebabs">Ver Kebabs</a>
                         </div>
                     </div>';
+                echo '<li><a href="?menu=verPedidos">Ver los Pedidos</a></li>';
                 
             } elseif (Sesion::leer('rol') === 'cliente') {
                 //cliente

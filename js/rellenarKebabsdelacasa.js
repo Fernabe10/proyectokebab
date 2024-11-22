@@ -10,10 +10,10 @@ window.addEventListener("load", function () {
                 kebabs.forEach((kebab) => {
                     const cajaKebab = document.createElement("div");
 
-                    // Crear una lista de ingredientes
-                    const ingredientesList = kebab.ingredientes.map(ingrediente => {
-                        return `<li>${ingrediente}</li>`; 
-                    }).join('');
+                    let ingredientesList = "";
+                    kebab.ingredientes.forEach((ingrediente) => {
+                        ingredientesList += `<li>${ingrediente}</li>`;
+                    });
 
                     cajaKebab.innerHTML = `
                         <img src="data:image/jpeg;base64,${kebab.foto}" alt="Foto de ${kebab.nombre}">
@@ -22,6 +22,7 @@ window.addEventListener("load", function () {
                         <span>€${kebab.precio}</span>
                         <h3>Ingredientes:</h3>
                         <ul>${ingredientesList}</ul>
+                        <h3>Alérgenos:</h3>
                         <div class="buttons-container">
                             <button>Pedir</button>
                             <button>Personalizar</button>
