@@ -1,5 +1,5 @@
 <head>
-    
+    <script src="js/rellenarTablaPedidos.js"></script>
 </head>
 
 <body>

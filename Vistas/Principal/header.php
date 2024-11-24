@@ -44,7 +44,7 @@ Sesion::iniciarSesion();
                 
             } elseif (Sesion::leer('rol') === 'cliente') {
                 //cliente
-                echo '<li><a href="?menu=misPedidos">Mis Pedidos</a></li>';
+                echo '<li><a href="?menu=carrito">Mi Carrito</a></li>';
                 echo '<li><a href="?menu=perfil">Mi Perfil</a></li>';
                 echo '<li><a href="?menu=monedero">Monedero</a></li>';
             }

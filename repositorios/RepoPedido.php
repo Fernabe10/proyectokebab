@@ -1,5 +1,5 @@
 <?php
-class RepoKebab{
+class RepoPedido{
     private $con;
 
     public function __construct() {
@@ -20,6 +20,30 @@ class RepoKebab{
         ]);
         
         return $pedido;
+    }
+
+    public function getAllPedidos() {
+        $stmt = $this->con->prepare("SELECT * FROM Pedido");
+        
+        if (!$stmt->execute()) {
+            return false;
+        }
+        
+        $pedidos = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $pedidos[] = new Pedido(
+                $row['id'],
+                $row['id_usuario'],
+                $row['nombre'],
+                $row['precio_total'],
+                $row['fecha_hora'],
+                $row['cantidad'],
+                $row['estado'],
+                $row['direccion']
+            );
+        }
+        
+        return $pedidos;
     }
 
 }

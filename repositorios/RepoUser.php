@@ -133,6 +133,13 @@ class RepoUsuario {
         return $stmt->execute([$monto, $usuarioId]);
     }
 
+    public function obtenerDireccionPorId($idUsuario) {
+        $stmt = $this->con->prepare("SELECT direccion FROM users WHERE id = ?");
+        $stmt->execute([$idUsuario]);
+        $direccion = $stmt->fetchColumn();
+        return $direccion;
+    }
+
 
 }
 ?>
