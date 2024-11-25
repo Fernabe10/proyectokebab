@@ -16,16 +16,14 @@ window.addEventListener("load", function () {
             fila.innerHTML = `
                 <td>${item.nombre}</td>
                 <td>${item.cantidad}</td>
-                <td>€${item.precio_total}</td>
+                <td>€${item.precio_total.toFixed(2)}</td>
                 <td>
-                    <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
+                    <button id="eliminarDelCarrito" onclick="eliminarDelCarrito(${index})">Eliminar</button>
                 </td>
             `;
+
             carritoContainer.appendChild(fila);
         });
-
-        // Añadir evento al botón "Vaciar Carrito"
-        document.getElementById("vaciarCarrito").addEventListener("click", vaciarCarrito);
     }
 
     function eliminarDelCarrito(index) {
@@ -40,9 +38,11 @@ window.addEventListener("load", function () {
         cargarCarrito();
     }
 
-    let btnPedir = document.getElementById("Pedir");
+    document.getElementById("vaciarCarrito").addEventListener("click", vaciarCarrito);
 
-    btnPedir.addEventListener("click", function () {
+    document.getElementById("eliminarDelCarrito").addEventListener("click", eliminarDelCarrito);
+
+    document.getElementById("Pedir").addEventListener("click", function () {
         const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
         if (carrito.length === 0) {
@@ -50,32 +50,24 @@ window.addEventListener("load", function () {
             return;
         }
 
-        // Mostrar confirmación antes de proceder
         const confirmar = confirm("¿Estás seguro de que quieres realizar el pedido?");
         if (!confirmar) return;
 
-        // Enviar los datos del carrito a la API de pedidos
-        fetch("Api/ApiPedido.php", { 
-            method: "POST", 
-            headers: { "Content-Type": "application/json" }, 
-            body: JSON.stringify(carrito) 
+        fetch("Api/ApiPedido.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(carrito),
         })
-            .then((respuesta) => respuesta.text()) // Leer como texto en lugar de JSON
-            .then((texto) => {
-                console.log("Respuesta del servidor:", texto);
-                try {
-                    const datos = JSON.parse(texto); // Intenta convertirlo en JSON
-                    if (datos.error) {
-                        alert(`Error al realizar el pedido: ${datos.error}`);
-                    } else {
-                        alert("Pedido realizado con éxito.");
-                        localStorage.removeItem("carrito");
-                        cargarCarrito();
-                    }
-                } catch (error) {
-                    console.error("Error al parsear JSON:", texto);
+            .then((respuesta) => respuesta.json())
+            .then((datos) => {
+                if (datos.error) {
+                    alert(`Error al realizar el pedido: ${datos.error}`);
+                } else {
+                    alert("Pedido realizado con éxito.");
+                    localStorage.removeItem("carrito");
+                    cargarCarrito();
                 }
             })
-            .catch((error) => console.error("Error al realizar el pedido:", error)); 
+            .catch((error) => console.error("Error al realizar el pedido:", error));
     });
 });

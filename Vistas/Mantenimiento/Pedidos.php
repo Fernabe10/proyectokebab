@@ -2,6 +2,7 @@
     <script src="js/rellenarTablaPedidos.js"></script>
 </head>
 
+<h1>Gestión de Pedidos</h1>
 <body>
     <table border="1">
         <thead>

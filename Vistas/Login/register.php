@@ -25,5 +25,5 @@
         <input type="text" name="direccion">
     </div>
 
-    <input type="submit" value="Enviar">
+    <input type="submit" value="Registrarse">
 </form>
