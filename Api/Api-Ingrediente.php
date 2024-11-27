@@ -89,7 +89,10 @@ function traerIngredientes(){
         
         $resultado[] = [
             'id' => $ingrediente->getId(),
-            'nombre' => $ingrediente->getNombre()
+            'nombre' => $ingrediente->getNombre(),
+            'precio' => $ingrediente->getPrecio(),
+            'descripcion' => $ingrediente->getDescripcion(),
+            'foto' => $ingrediente->getFoto()
         ];
     }
     

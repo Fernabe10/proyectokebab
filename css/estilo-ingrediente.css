@@ -81,7 +81,7 @@ input[type="submit"]:hover {
 }
 
 select[multiple] {
-    height: 120px; /* Ajuste para que el selector múltiple sea más visible */
+    height: 120px;
     box-sizing: border-box;
 }
 
@@ -93,6 +93,6 @@ select[multiple] {
         font-size: 14px;
     }
     input[type="submit"] {
-        width: 100%; /* El botón ocupará todo el ancho en pantallas pequeñas */
+        width: 100%; 
     }
 }

@@ -1,6 +1,6 @@
 #container {
     display: flex;
-    gap: 20px; /* Espacio entre el mapa y el formulario */
+    gap: 20px; 
 }
 
 #container div:nth-child(1) {
@@ -12,7 +12,7 @@
 
 #container div:nth-child(2) {
     width: 50%;
-    height: auto; /* Ajuste dinámico */
+    height: auto;
     margin-top: 20px;
     margin-bottom: 50px;
     padding: 20px;
@@ -35,11 +35,11 @@ iframe {
 
 form {
     display: grid;
-    gap: 10px; /* Espacio reducido entre los campos */
-    grid-template-columns: 1fr; /* Una sola columna */
-    align-items: start; /* Alinea verticalmente los elementos al inicio */
+    gap: 10px;
+    grid-template-columns: 1fr; 
+    align-items: start; 
     width: 100%;
-    max-width: 500px; /* Limita el ancho para un mejor diseño */
+    max-width: 500px; 
     margin: auto;
 }
 

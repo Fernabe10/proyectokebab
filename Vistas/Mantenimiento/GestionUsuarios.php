@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Gestión de Usuarios</title>
     <script src="js/rellenarTablaUsuarios.js" defer></script>
+    <link rel="stylesheet" href="css/estilo-tablaUsuarios.css">
 </head>
 <body>
     <h1>Gestión de Usuarios</h1>

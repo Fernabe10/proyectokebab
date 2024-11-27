@@ -15,4 +15,7 @@
     </div>
     
     <input type="submit" value="Iniciar Sesión">
+    <div>
+        <a href="?menu=register">¿No estas registrado?</a>
+    </div>
 </form>

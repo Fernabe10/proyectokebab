@@ -28,11 +28,11 @@ Sesion::iniciarSesion();
                 echo '<li><a href="?menu=gestionUsuarios">Gestión de Usuarios</a></li>';
                 echo '<div class="dropdown">
                 <li>Gestionar Ingredientes</li>
-                    <div class="dropdown-content">
-                        <a href="?menu=insertarIngrediente">Insertar Ingrediente</a><br>
-                        <a href="?menu=verIngredientes">Ver Ingredientes</a>
-                        </div>
-                    </div>';
+                <div class="dropdown-content ingredientes">
+                    <a href="?menu=insertarIngrediente">Insertar Ingrediente</a><br>
+                    <a href="?menu=verIngredientes">Ver Ingredientes</a>
+                </div>
+                </div>';
                     echo '<div class="dropdown">
                     <li>Gestionar Kebabs</li>
                     <div class="dropdown-content">
@@ -61,6 +61,5 @@ Sesion::iniciarSesion();
         <?php endif; ?>
     </div>
 </header>
-
                 
 

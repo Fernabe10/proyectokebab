@@ -1,5 +1,6 @@
 <head>
     <script src="js/rellenarTablaPedidos.js"></script>
+    <link rel="stylesheet" href="css/estilo-tablaPedidos.css">
 </head>
 
 <h1>Gestión de Pedidos</h1>

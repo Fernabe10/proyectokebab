@@ -46,8 +46,11 @@ class RepoKebab{
             return new Kebab(
                 $resultado['id'],
                 $resultado['nombre'],
-                $resultado['precio_base'],
                 $resultado['foto'],
+                $resultado['descripcion'],
+                $resultado['precio_base'],
+                
+                
             );
         } else {
             return null;

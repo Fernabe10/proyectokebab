@@ -24,9 +24,9 @@ window.addEventListener("load", function () {
                         <ul>${ingredientesList}</ul>
                         <div class="buttons-container">
                             <button class="pedir-button" data-id="${kebab.id}" data-nombre="${kebab.nombre}" data-precio="${kebab.precio}">Pedir</button>
-                            <button>Personalizar</button>
+                            <a href="?menu=personalizar&id=${kebab.id}" class="personalizar-button">Personalizar</a>
                         </div>
-                    `;
+                        `;
 
                     kebabContainer.appendChild(cajaKebab);
                 });

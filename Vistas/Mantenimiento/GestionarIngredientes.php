@@ -2,21 +2,19 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Gestión de Kebabs</title>
-    <script src="js/rellenarTablaKebabs.js" defer></script>
-    <link rel="stylesheet" href="css/estilo-tablaKebabs.css">
+    <title>Gestión de Usuarios</title>
+    <script src="js/rellenarTablaIngredientes.js"></script>
+    <link rel="stylesheet" href="css/estilo-tablaIngredientes.css"> 
 </head>
 <body>
-    <h1>Gestión de Kebabs</h1>
+    <h1>Gestión de Ingredientes</h1>
     
     <table border="1" class="nombres">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nombre</th>
+                <th>Precio</th>
                 <th>Descripcion</th>
-                <th>Precio Base</th>
-                <th>Ingredientes</th>
                 <th>Foto</th>
             </tr>
         </thead>

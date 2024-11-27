@@ -24,6 +24,9 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "insertarIngrediente") {
         require_once './Vistas/mantenimiento/InsertarIngrediente.php';
     }
+    if ($_GET['menu'] == "verIngredientes") {
+        require_once './Vistas/mantenimiento/GestionarIngredientes.php';
+    }
     if ($_GET['menu'] == "gestionUsuarios") {
         require_once './Vistas/mantenimiento/GestionUsuarios.php';
     }
@@ -38,6 +41,9 @@ if (isset($_GET['menu'])) {
     }
     if ($_GET['menu'] == "kebabpersonalizado") {
         require_once './Vistas/Principal/kebabpersonalizado.php';
+    }
+    if ($_GET['menu'] == "personalizar") {
+        require_once './Vistas/Principal/personalizar.php';
     }
     if ($_GET['menu'] == "verPedidos") {
         require_once './Vistas/Mantenimiento/pedidos.php';
