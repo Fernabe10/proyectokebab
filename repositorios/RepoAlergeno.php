@@ -6,6 +6,16 @@ class RepoAlergeno{
         $this->con = Conexion::getConection();
     }
 
+
+    public function insertarAlergeno(Alergeno $alergeno) {
+        $stmt = $this->con->prepare("INSERT INTO alergenos (nombre, foto) VALUES (?, ?)");
+        $stmt->execute([
+            $alergeno->getNombre(),
+            $alergeno->getFoto()
+        ]);
+        return $alergeno;
+    }
+
     public function getAllAlergenos() {
         $stmt = $this->con->prepare("SELECT * FROM alergenos");
         $stmt->execute();
@@ -15,7 +25,7 @@ class RepoAlergeno{
             $alergenos[] = new Alergeno(
                 $row['id'],
                 $row['nombre'],
-                $row['descripcion']
+                $row['foto']
             );
         }
         

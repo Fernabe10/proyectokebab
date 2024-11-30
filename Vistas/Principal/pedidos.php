@@ -1,15 +1,14 @@
 <head>
-    <script src="js/rellenarTablaPedidos.js"></script>
+    <script src="js/cargarPedidosUsuario.js"></script>
     <link rel="stylesheet" href="css/estilo-tablaPedidos.css">
 </head>
 
-<h1>Gestión de Pedidos</h1>
+<h1>Mis pedidos</h1>
 <body>
     <table border="1">
         <thead>
             <tr>
                 <th>Nº Pedido</th>
-                <th>Id Cliente</th>
                 <th>Nombre Pedido</th>
                 <th>Precio Total</th>
                 <th>Cantidad</th>

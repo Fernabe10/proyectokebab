@@ -24,6 +24,9 @@
         <label for="direccion">Dirección:</label>
         <input type="text" name="direccion">
     </div>
+    
 
     <input type="submit" value="Registrarse">
+
+    <a href="?menu=login">¿Ya estas registrado?</a>
 </form>

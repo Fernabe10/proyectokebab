@@ -29,6 +29,7 @@ class Autocargador
     require_once $raiz . 'repositorios/RepoKebab.php';
     require_once $raiz . 'repositorios/RepoAlergeno.php';
     require_once $raiz . 'repositorios/RepoKebabIngrediente.php';
+    require_once $raiz . 'repositorios/RepoIngredienteAlergeno.php';
 }
 
 }

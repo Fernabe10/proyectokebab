@@ -22,10 +22,14 @@ window.addEventListener("load", function () {
                         <span>€${kebab.precio}</span>
                         <h3>Ingredientes:</h3>
                         <ul>${ingredientesList}</ul>
+                        <h3>Alergenos:</h3>
+                        <ul>${kebab.alergenos.map(a => `<li>${a}</li>`).join('')}</ul>
                         <div class="buttons-container">
                             <button class="pedir-button" data-id="${kebab.id}" data-nombre="${kebab.nombre}" data-precio="${kebab.precio}">Pedir</button>
                             <a href="?menu=personalizar&id=${kebab.id}" class="personalizar-button">Personalizar</a>
                         </div>
+
+                        
                         `;
 
                     kebabContainer.appendChild(cajaKebab);

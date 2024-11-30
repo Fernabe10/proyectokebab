@@ -21,6 +21,12 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "contacto") {
         require_once './Vistas/Principal/contacto.php';
     }
+    if ($_GET['menu'] == "tablaAlergenos") {
+        require_once './Vistas/Principal/tablaAlergenos.php';
+    }
+    if ($_GET['menu'] == "insertarAlergeno") {
+        require_once './Vistas/mantenimiento/InsertarAlergeno.php';
+    }
     if ($_GET['menu'] == "insertarIngrediente") {
         require_once './Vistas/mantenimiento/InsertarIngrediente.php';
     }
@@ -45,8 +51,14 @@ if (isset($_GET['menu'])) {
     if ($_GET['menu'] == "personalizar") {
         require_once './Vistas/Principal/personalizar.php';
     }
+    if ($_GET['menu'] == "mispedidos") {
+        require_once './Vistas/Principal/pedidos.php';
+    }
     if ($_GET['menu'] == "verPedidos") {
         require_once './Vistas/Mantenimiento/pedidos.php';
+    }
+    if ($_GET['menu'] == "grafico") {
+        require_once './Vistas/Mantenimiento/GraficoVentas.php';
     }
     if ($_GET['menu'] == "carrito") {
         require_once './Vistas/Principal/carrito.php';

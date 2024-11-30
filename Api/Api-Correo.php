@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mail($to, "Formulario de contacto: $subject", $body, $headers)) {
         echo "Correo enviado correctamente.";
+        
     } else {
         echo "Hubo un error al enviar el correo.";
     }

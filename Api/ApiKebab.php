@@ -67,8 +67,19 @@ function traerKebabs() {
         $ingredientes = $repoKebabIngrediente->getIngredientesByKebabId($kebab['id']);
 
         $ingredientesList = [];
+        $alergenosList = []; // Lista para consolidar alérgenos
+        $repoAlergeno = new RepoIngredienteAlergeno();
+
         foreach ($ingredientes as $ingrediente) {
+            // Agregar el nombre del ingrediente a la lista
             $ingredientesList[] = $ingrediente['nombre'];
+
+            // Obtener los alérgenos del ingrediente
+            $alergenos = $repoAlergeno->getAlergenosByIngredienteId($ingrediente['id']);
+            foreach ($alergenos as $alergeno) {
+                // Evitar duplicados utilizando el ID del alérgeno como clave
+                $alergenosList[$alergeno['id']] = $alergeno['nombre'];
+            }
         }
 
         $resultado[] = [
@@ -77,12 +88,15 @@ function traerKebabs() {
             'foto' => $kebab['foto'],
             'descripcion' => $kebab['descripcion'],
             'precio' => $kebab['precio_base'],
-            'ingredientes' => $ingredientesList
+            'ingredientes' => $ingredientesList,
+            'alergenos' => array_values($alergenosList) // Convertir de array asociativo a lista simple
         ];
     }
 
+    header('Content-Type: application/json');
     echo json_encode($resultado);
 }
+
 
 /**
  * Función para traer un kebab específico por su ID.

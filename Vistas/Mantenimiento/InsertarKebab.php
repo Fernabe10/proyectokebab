@@ -1,9 +1,10 @@
 <head>
-    <link rel="stylesheet" href="css/estilo-insertarKebab.css">
+    <link rel="stylesheet" href="css/estilo-insertarKebabAdmin.css">
     <script src="js/previsualizarImagen.js" defer></script>
     <script src="js/rellenarIngredientes.js" defer></script>
 </head>
-<h1>Insertar un Kebab</h1>
+<body>
+<h1 id="titulo">Insertar un Kebab</h1>
 
 <form action="Api/ApiKebab.php" method="POST" enctype="multipart/form-data">
     <div id="contenedor1">
@@ -33,3 +34,4 @@
     
     <input type="submit" value="Añadir">
 </form>
+</body>

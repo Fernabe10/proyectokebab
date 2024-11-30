@@ -32,7 +32,6 @@ th {
     padding: 5px;
     background-color: #f4f4f4;
     color: #555;
-    font-size: 1rem;
 }
 
 td {
@@ -67,24 +66,19 @@ td[colspan="8"] {
     font-style: italic;
     color: #888;
 }
-
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
+select{
+    padding: 5px 10px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1rem;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    color: #333;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 5px;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-
-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+select option{
+    background-color: #ffffff;
+    color: #333;
+    padding: 5px;
+    font-size: 14px;
 }

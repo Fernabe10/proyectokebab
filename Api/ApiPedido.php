@@ -17,7 +17,7 @@ elseif ($_SERVER['REQUEST_METHOD']=='DELETE')
 }
 elseif ($_SERVER['REQUEST_METHOD']=='PUT')
 {
-    
+    actualizarEstado();
 }
 
 function agregarPedido() {
@@ -103,4 +103,31 @@ function traerPedidos(){
    
     header('Content-Type: application/json');
     echo json_encode($resultado);
+}
+
+function actualizarEstado(){
+    // Obtener los datos del cuerpo de la solicitud PUT
+    $data = json_decode(file_get_contents("php://input"), true);
+
+    if (isset($data['id']) && isset($data['estado'])) {
+        $idPedido = $data['id'];
+        $nuevoEstado = $data['estado'];
+
+        // Crear instancia de RepoPedido
+        $repoPedido = new RepoPedido();
+
+        // Llamar al método actualizarEstado del repositorio
+        $resultado = $repoPedido->actualizarEstado($idPedido, $nuevoEstado);
+
+        if ($resultado) {
+            // Si la actualización fue exitosa, responder con un mensaje de éxito
+            echo json_encode(['status' => 'success', 'message' => 'Estado del pedido actualizado correctamente.']);
+        } else {
+            // Si la actualización falló (por ejemplo, el ID no existe o hay un error de base de datos)
+            echo json_encode(['status' => 'error', 'message' => 'No se pudo actualizar el estado del pedido.']);
+        }
+    } else {
+        // Si los datos necesarios no están en la solicitud, responder con error
+        echo json_encode(['status' => 'error', 'message' => 'Datos incompletos. Se requiere id y estado.']);
+    }
 }

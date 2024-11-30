@@ -2,8 +2,9 @@
 require_once 'helpers/sesion.php';
 Sesion::iniciarSesion();
 ?>
+
 <head>
-    <link rel="stylesheet" href="css/estilo-header.css">    
+    <link rel="stylesheet" href="css/estilo-header.css">
 </head>
 <header>
     <div>
@@ -16,11 +17,12 @@ Sesion::iniciarSesion();
             <div class="dropdown">
                 <li>Kebabs</li>
                 <div class="dropdown-content">
-                        <a href="?menu=kebabdelacasa">De la casa</a><br>
-                        <a href="?menu=kebabpersonalizado">Personalizado</a>
-                        </div>
+                    <a href="?menu=kebabdelacasa">De la casa</a><br>
+                    <a href="?menu=kebabpersonalizado">Personalizado</a>
+                </div>
             </div>
             <li><a href="?menu=contacto">Contacto</a></li>
+            <li><a href="?menu=tablaAlergenos">Alérgenos</a></li>
 
             <?php
             //admin
@@ -31,20 +33,28 @@ Sesion::iniciarSesion();
                 <div class="dropdown-content ingredientes">
                     <a href="?menu=insertarIngrediente">Insertar Ingrediente</a><br>
                     <a href="?menu=verIngredientes">Ver Ingredientes</a>
+                    <a href="?menu=insertarAlergeno">Insertar Alérgeno</a>
                 </div>
                 </div>';
-                    echo '<div class="dropdown">
-                    <li>Gestionar Kebabs</li>
-                    <div class="dropdown-content">
-                        <a href="?menu=insertarKebab">Insertar Kebab</a><br>
-                        <a href="?menu=verKebabs">Ver Kebabs</a>
+                echo '<div class="dropdown">
+                <li>Gestionar Kebabs</li>
+                <div class="dropdown-content">
+                    <a href="?menu=insertarKebab">Insertar Kebab</a><br>
+                    <a href="?menu=verKebabs">Ver Kebabs</a>
+                    </div>
+                </div>';
+                echo '<div class="dropdown">
+                <li>Pedidos</li>
+                    <div class="dropdown-content pedidos">
+                        <a href="?menu=verPedidos">Ver Pedidos</a>
+                        <a href="?menu=grafico">Gráfico Ventas</a>
                         </div>
                     </div>';
-                echo '<li><a href="?menu=verPedidos">Ver los Pedidos</a></li>';
                 
             } elseif (Sesion::leer('rol') === 'cliente') {
                 //cliente
                 echo '<li><a href="?menu=carrito">Mi Carrito</a></li>';
+                echo '<li><a href="?menu=mispedidos">Mis Pedidos</a></li>';
                 echo '<li><a href="?menu=perfil">Mi Perfil</a></li>';
                 echo '<li><a href="?menu=monedero">Monedero</a></li>';
             }
@@ -53,13 +63,11 @@ Sesion::iniciarSesion();
     </nav>
     <div>
         <?php if (Sesion::leer('usuario')): ?>
-            <span><?php echo Sesion::leer('usuario'); ?></span>
-            <a href="helpers/logout.php">Cerrar Sesión</a>
+        <span><?php echo Sesion::leer('usuario'); ?></span>
+        <a href="helpers/logout.php">Cerrar Sesión</a>
         <?php else: ?>
-            <a href="?menu=login">Iniciar Sesión</a>
-            <a href="?menu=register">Registrarse</a>
+        <a href="?menu=login">Iniciar Sesión</a>
+        <a href="?menu=register">Registrarse</a>
         <?php endif; ?>
     </div>
 </header>
-                
-

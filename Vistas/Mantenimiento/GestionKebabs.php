@@ -12,7 +12,7 @@
     <table border="1" class="nombres">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>Nº Kebab</th>
                 <th>Nombre</th>
                 <th>Descripcion</th>
                 <th>Precio Base</th>

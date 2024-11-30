@@ -32,6 +32,11 @@ header div:nth-child(1) img {
     width: auto;
 }
 
+li img {
+    height: 25px;
+    width: auto;
+}
+
 header div:nth-child(1) span {
     font-size: 1.5rem;
     font-weight: bold;
@@ -50,6 +55,7 @@ nav a {
     font-size: 1rem;
     font-weight: 500;
 }
+
 
 nav a:hover,
 nav a:focus,
@@ -130,13 +136,11 @@ header div:nth-child(3) a:focus {
 .dropdown-content.ingredientes {
     width: 200px;
 }
+.dropdown-content.pedidos a:first-of-type{
+    margin-bottom: 20px;
+}
 
 
 .botonesnav {
     width: 160px;
-}
-
-
-.dropdown-content {
-    animation: dropdownFadeIn 0.3s ease-out;
 }

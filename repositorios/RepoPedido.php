@@ -46,4 +46,58 @@ class RepoPedido{
         return $pedidos;
     }
 
+    public function actualizarEstado($idPedido, $nuevoEstado) {
+        $stmt = $this->con->prepare("UPDATE Pedido SET estado = :estado WHERE id = :id");
+        $stmt->bindParam(':estado', $nuevoEstado, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $idPedido, PDO::PARAM_INT);
+    
+        if (!$stmt->execute()) {
+            return false;
+        }
+    
+        
+        if ($stmt->rowCount() === 0) {
+            return false;
+        }
+    
+        return true;
+    }
+
+    public function getPedidosByUsuario($idUsuario){
+    // Preparar la consulta para seleccionar solo los campos deseados
+    $sql = "SELECT id, nombre, precio_total, fecha_hora, cantidad, estado, direccion 
+            FROM Pedido 
+            WHERE id_usuario = :idUsuario";
+    $stmt = $this->con->prepare($sql);
+
+    // Asociar el parámetro a la consulta
+    $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
+
+    // Ejecutar la consulta y manejar errores
+    if (!$stmt->execute()) {
+        return false;
+    }
+
+    // Crear un array para almacenar los pedidos
+    $pedidos = [];
+
+    // Recorrer los resultados y convertirlos en objetos Pedido
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $pedidos[] = [
+            'id' => $row['id'],
+            'nombre' => $row['nombre'],
+            'precio_total' => $row['precio_total'],
+            'fecha_hora' => $row['fecha_hora'],
+            'cantidad' => $row['cantidad'],
+            'estado' => $row['estado'],
+            'direccion' => $row['direccion']
+        ];
+    }
+
+    return $pedidos;
+}
+
+    
+    
+
 }

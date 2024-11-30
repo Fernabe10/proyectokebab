@@ -2,12 +2,12 @@
 class Alergeno{
     private $id;
     private $nombre;
-    private $descripcion;
+    private $foto;
 
-    public function __construct($id, $nombre, $descripcion){
+    public function __construct($id, $nombre, $foto){
         $this->id = $id;
         $this->nombre = $nombre;
-        $this->descripcion = $descripcion;
+        $this->foto = $foto;
     }
 
     
@@ -29,12 +29,12 @@ class Alergeno{
     }
 
     
-    public function getDescripcion(){
-        return $this->descripcion;
+    public function getFoto(){
+        return $this->foto;
     }
 
-    public function setDescripcion($descripcion){
-        $this->descripcion = $descripcion;
+    public function setFoto($foto){
+        $this->foto = $foto;
     }
 }
 
