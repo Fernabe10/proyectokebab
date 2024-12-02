@@ -3,6 +3,10 @@
     gap: 20px; 
 }
 
+header nav li:nth-child(3) a{
+    text-decoration: underline white 5px;
+}
+
 #container div:nth-child(1) {
     width: 50%;
     height: 600px;

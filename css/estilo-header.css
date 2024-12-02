@@ -140,6 +140,9 @@ header div:nth-child(3) a:focus {
     margin-bottom: 20px;
 }
 
+.dropdown-content.ingredientes a:nth-of-type(2){
+    margin-bottom: 20px;
+}
 
 .botonesnav {
     width: 160px;

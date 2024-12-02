@@ -12,6 +12,10 @@ main {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
+header nav li:nth-child(1) a{
+    text-decoration: underline white 5px;
+}
+
 main > div {
     display: flex;
     flex-direction: column;

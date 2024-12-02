@@ -10,6 +10,10 @@ body {
     box-sizing: border-box;
 }
 
+header nav li:nth-child(8) a{
+    text-decoration: underline white 5px;
+}
+
 h1 {
     margin-bottom: 20px;
     color: #333;

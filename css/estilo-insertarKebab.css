@@ -6,6 +6,10 @@ body {
     color: #333;
 }
 
+header nav .dropdown li{
+    text-decoration: underline white 5px;
+}
+
 main, form {
     max-width: 900px;
     margin: 20px auto;

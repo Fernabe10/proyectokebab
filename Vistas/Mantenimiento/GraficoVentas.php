@@ -1,6 +1,7 @@
 <head>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/grafica.js"></script>
+    <link rel="stylesheet" href="css/estilo-grafica.css"> 
 </head>
 
 <body>

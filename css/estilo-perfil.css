@@ -5,6 +5,10 @@ h1 {
     margin-top: 20px;
 }
 
+header nav li:nth-child(7) a{
+    text-decoration: underline white 5px;
+}
+
 .perfil-contenedor {
     display: flex;
     width: 50%;

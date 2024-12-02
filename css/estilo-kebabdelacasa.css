@@ -3,6 +3,10 @@ body {
     font-family: Arial, sans-serif;
     background-color: #555;
 }
+
+header nav .dropdown li{
+    text-decoration: underline white 5px;
+}
 div h1{
     text-align: center;
     margin-bottom: 20px;
