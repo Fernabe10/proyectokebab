@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     padding: 0;
     background-color: #f9f9f9;
+    width: 100%;
 }
 
 header nav li:nth-child(5) a{
@@ -58,3 +59,5 @@ button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
+

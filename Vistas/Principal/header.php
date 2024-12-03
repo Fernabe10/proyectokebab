@@ -27,7 +27,7 @@ Sesion::iniciarSesion();
             <?php
             //admin
             if (Sesion::leer('rol') === 'admin') {
-                echo '<li><a href="?menu=gestionUsuarios">Gestión de Usuarios</a></li>';
+                echo '<li><a href="?menu=gestionUsuarios">Gestión Usuarios</a></li>';
                 echo '<div class="dropdown">
                 <li>Gestionar Ingredientes</li>
                 <div class="dropdown-content ingredientes">

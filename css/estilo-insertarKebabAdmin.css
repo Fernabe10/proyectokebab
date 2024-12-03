@@ -124,13 +124,3 @@ input[type="submit"]:hover {
     
 }
 
-@media (max-width: 768px) {
-    form {
-        grid-template-columns: 1fr;
-    }
-
-    button[type="submit"],
-    input[type="submit"] {
-        grid-column: span 1;
-    }
-}
