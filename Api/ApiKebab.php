@@ -3,42 +3,42 @@
 require_once '../cargadores/autocargador.php';
 require_once '../helpers/sesion.php';
 
-// Seleccionamos la acción según el método HTTP
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     insertarKebab();
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
-    traerKebabPorId(); // Si se pasa un ID, traemos un kebab específico
+    traerKebabPorId(); // Otro metodo por si me pasa la id del kebab
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
     traerKebabs(); // Si no hay ID, traemos todos los kebabs
 } elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-    // Implementar eliminación si es necesario
+    
 } elseif ($_SERVER['REQUEST_METHOD'] == 'PUT') {
-    // Implementar actualización si es necesario
+    
 }
 
-/**
- * Función para insertar un nuevo kebab en la base de datos.
- */
+
+//Función para insertar un nuevo kebab en la base de datos.
+
 function insertarKebab() {
     $nombre = $_POST['nombre'];
     $precio = $_POST['precio'];
     $descripcion = $_POST['descripcion'];
     $foto = null;
 
-    // Procesamos la foto si se ha enviado
+  
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
         $fotoContenido = file_get_contents($_FILES['foto']['tmp_name']);
         $foto = base64_encode($fotoContenido);
     }
 
-    // Creamos un objeto Kebab
+    
     $kebab = new Kebab(null, $nombre, $foto, $descripcion, $precio);
 
-    // Insertamos el kebab
+   
     $repoKebab = new RepoKebab();
     $kebab = $repoKebab->insertarKebab($kebab);
 
-    // Procesamos los ingredientes seleccionados
+    // Recojo los ingredientes seleccionados, los recorro y los añado en el kebab
     $ingredientesSeleccionados = json_decode($_POST['ingredientes_seleccionados']);
     if ($ingredientesSeleccionados) {
         $repoKebabIngrediente = new RepoKebabIngrediente();
@@ -54,9 +54,9 @@ function insertarKebab() {
     }
 }
 
-/**
- * Función para traer todos los kebabs con sus ingredientes.
- */
+
+//Función para traer todos los kebabs con sus ingredientes.
+
 function traerKebabs() {
     $repoKebab = new RepoKebab();
     $kebabs = $repoKebab->getAllKebabs();
@@ -67,17 +67,16 @@ function traerKebabs() {
         $ingredientes = $repoKebabIngrediente->getIngredientesByKebabId($kebab['id']);
 
         $ingredientesList = [];
-        $alergenosList = []; // Lista para consolidar alérgenos
+        $alergenosList = []; 
         $repoAlergeno = new RepoIngredienteAlergeno();
 
         foreach ($ingredientes as $ingrediente) {
             
             $ingredientesList[] = $ingrediente['nombre'];
 
-            // Obtener los alérgenos del ingrediente
             $alergenos = $repoAlergeno->getAlergenosByIngredienteId($ingrediente['id']);
             foreach ($alergenos as $alergeno) {
-                // Evitar duplicados utilizando el ID del alérgeno como clave
+                // Evito los duplicados con la id del alergeno
                 $alergenosList[$alergeno['id']] = $alergeno['nombre'];
             }
         }
@@ -89,7 +88,7 @@ function traerKebabs() {
             'descripcion' => $kebab['descripcion'],
             'precio' => $kebab['precio_base'],
             'ingredientes' => $ingredientesList,
-            'alergenos' => array_values($alergenosList) // Convertir de array asociativo a lista simple
+            'alergenos' => array_values($alergenosList) // Convierto de array asociativo a lista simple
         ];
     }
 
@@ -98,15 +97,14 @@ function traerKebabs() {
 }
 
 
-/**
- * Función para traer un kebab específico por su ID.
- */
+
+//Función para traer un kebab específico por su ID.
+
 function traerKebabPorId() {
-    $kebabId = intval($_GET['id']);
+    $kebabId = intval($_GET['id']);//recoge el valor int de la variable 
     $repoKebab = new RepoKebab();
     $repoKebabIngrediente = new RepoKebabIngrediente();
 
-    // Obtenemos el kebab
     $kebab = $repoKebab->buscarPorId($kebabId);
     if (!$kebab) {
         http_response_code(404);
@@ -114,18 +112,16 @@ function traerKebabPorId() {
         return;
     }
 
-    // Obtenemos los ingredientes del kebab
     $ingredientesDelKebab = $repoKebabIngrediente->getIngredientesByKebabId($kebabId);
 
-    // Construimos la respuesta
-    $response = [
+    $respuesta = [
         'id' => $kebab->getId(),
         'nombre' => $kebab->getNombre(),
         'descripcion' => $kebab->getDescripcion(),
         'precio' => $kebab->getPrecioBase(),
         'foto' => $kebab->getFoto(),
-        'ingredientesDelKebab' => $ingredientesDelKebab, // Solo los ingredientes del kebab
+        'ingredientesDelKebab' => $ingredientesDelKebab,
     ];
 
-    echo json_encode($response);
+    echo json_encode($respuesta);
 }

@@ -140,6 +140,15 @@ class RepoUsuario {
         return $direccion;
     }
 
+    public function actualizarMonedero(User $usuario) {
+        $sql = "UPDATE users SET monedero = :monedero WHERE id = :id";
+        $stmt = $this->con->prepare($sql);
+        return $stmt->execute([
+            ':monedero' => $usuario->getMonedero(),
+            ':id' => $usuario->getId()
+        ]);
+    }
+
 
 }
 ?>

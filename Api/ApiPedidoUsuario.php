@@ -23,19 +23,19 @@ elseif ($_SERVER['REQUEST_METHOD']=='PUT')
 
 
 function traerPedidos() {
-    // Obtener la ID del usuario desde la sesión
+    
     $idUsuario = Sesion::leer('usuario_id');
 
-    // Crear el objeto RepoPedido y obtener los pedidos del usuario
+    
     $repoPedido = new RepoPedido();
     $pedidos = $repoPedido->getPedidosByUsuario($idUsuario);
 
-    // Inicializar el array de resultados
+    
     $resultado = [];
 
-    // Recorrer los pedidos y agregar los datos al array de resultados
+    
     foreach ($pedidos as $pedido) {
-        // Aquí no es necesario llamar a métodos como getNombre(), porque ya tienes los datos en el array
+       
         $resultado[] = [
             'id' => $pedido['id'],
             'nombre' => $pedido['nombre'],
@@ -47,7 +47,7 @@ function traerPedidos() {
         ];
     }
 
-    // Devolver los resultados en formato JSON
+    
     header('Content-Type: application/json');
     echo json_encode($resultado);
 }

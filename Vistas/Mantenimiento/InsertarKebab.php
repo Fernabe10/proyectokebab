@@ -4,7 +4,7 @@
     <script src="js/rellenarIngredientes.js" defer></script>
 </head>
 <body>
-<h1 id="titulo">Insertar un Kebab</h1>
+<h1 id="titulo">Insertar un Kebab de la casa</h1>
 
 <form action="Api/ApiKebab.php" method="POST" enctype="multipart/form-data">
     <div id="contenedor1">

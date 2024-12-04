@@ -57,7 +57,7 @@
                         tablaCuerpo.appendChild(fila);
     
                         fila.addEventListener("dblclick", function () {
-                            activarEdicion(); //FUNCION PARA ACTIVAR LA EDICION DE LA TABLA
+                            activarEdicion(); //funcion para activar la edicion de la tabla
                         });
                     });
                 })

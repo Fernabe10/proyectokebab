@@ -1,28 +1,27 @@
 document.getElementById("formKebabPersonalizado").addEventListener("submit", function (e) {
-    e.preventDefault(); // Evita la recarga de la página
+    e.preventDefault(); 
 
-    // Verificar si el usuario ha iniciado sesión
+    // primero verifico si el usuario ha iniciado sesión
     fetch("helpers/verificar_sesion.php")
         .then((response) => response.json())
         .then((data) => {
             if (data.autenticado == false) {
                 alert("Para pedir un kebab personalizado es necesario iniciar sesión.");
-                return; // No continuar si el usuario no está autenticado
+                return;
             }
 
-            // Si el usuario está autenticado, procede con el pedido
             const nombre = document.getElementById("nombre").value;
             const descripcion = document.getElementById("descripcion").value;
             const ingredientesSeleccionados = JSON.parse(
                 document.getElementById("ingredientesSeleccionadosInput").value
             );
 
-            // Calcula el precio basado en los ingredientes
-            const precioBase = 5; // Precio base del kebab personalizado
+            
+            const precioBase = 5; // le doy un precio base por ahora
             const precioPorIngrediente = 0.5;
             const precioTotal = precioBase + ingredientesSeleccionados.length * precioPorIngrediente;
 
-            // Agrega el kebab personalizado al carrito
+            // agrego el kebab personalizado al carrito
             const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
             carrito.push({
                 nombre,
@@ -30,10 +29,10 @@ document.getElementById("formKebabPersonalizado").addEventListener("submit", fun
                 ingredientes: ingredientesSeleccionados,
                 precio_total: precioTotal,
                 cantidad: 1,
-                tipo: "personalizado", // Marca este item como "personalizado"
+                tipo: "personalizado",
             });
 
-            // Guarda el carrito actualizado en localStorage
+            
             localStorage.setItem("carrito", JSON.stringify(carrito));
 
             // Muestra un mensaje de confirmación

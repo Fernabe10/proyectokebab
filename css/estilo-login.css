@@ -65,3 +65,8 @@ form input[type="submit"]:hover {
     background-color: #45a049;
 }
 
+.claseErrores{
+    color: red;
+    font-size: 15px;
+}
+

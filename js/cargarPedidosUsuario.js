@@ -7,10 +7,10 @@ window.addEventListener("load", function () {
             .then(pedidos => {
                 const tablaCuerpo = document.querySelector("table tbody");
 
-                // Limpiar el contenido de la tabla
+                
                 tablaCuerpo.innerHTML = "";
 
-                // Mostrar mensaje si no hay pedidos
+                
                 if (pedidos.length === 0) {
                     const filaVacia = document.createElement("tr");
                     filaVacia.innerHTML = `<td colspan="8">No tienes pedidos registrados.</td>`;
@@ -18,7 +18,7 @@ window.addEventListener("load", function () {
                     return;
                 }
 
-                // Crear filas para cada pedido
+                
                 pedidos.forEach(pedido => {
                     const fila = document.createElement("tr");
 

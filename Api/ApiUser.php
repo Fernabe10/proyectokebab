@@ -25,6 +25,7 @@ function registrarUsuario(){
     $monedero = 0.0;
     $rol = "cliente";
 
+
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
         $fotoContenido = file_get_contents($_FILES['foto']['tmp_name']);
         $foto = base64_encode($fotoContenido);

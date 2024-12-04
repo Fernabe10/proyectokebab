@@ -36,6 +36,7 @@ function traerMonedero($usuarioId) {
 
 function agregarFondos($usuarioId) {
     $balance = $_POST['balance'];
+    //compruebo que es un numero
     if ($balance === null || !is_numeric($balance) || $balance <= 0) {
         echo "Monto inválido.";
         exit;
@@ -47,7 +48,6 @@ function agregarFondos($usuarioId) {
     if ($resultado) {
         $nuevoSaldo = $repoUsuario->traerMonedero($usuarioId);
         Sesion::escribir('monedero', $nuevoSaldo);
-        echo "Fondos agregados exitosamente. Nuevo saldo: " . number_format($nuevoSaldo, 2) . " €";
     } else {
         echo "Error al recargar el monedero.";
     }

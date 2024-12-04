@@ -80,5 +80,10 @@ form div:last-child {
     margin-top: 20px;
 }
 
+.claseErrores{
+    color: red;
+    font-size: 15px;
+}
+
 
 

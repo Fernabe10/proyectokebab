@@ -1,4 +1,5 @@
 <head>
+    <script src="js/validarLogin.js"></script>
     <link rel="stylesheet" href="css/estilo-login.css">
 </head>
 
@@ -8,10 +9,12 @@
     <div>
         <label for="correo">Correo Electrónico:</label>
         <input type="email" name="email" required>
+        <label for="error" class="claseErrores"></label>
     </div>
     <div>
         <label for="contrasena">Contraseña:</label>
         <input type="password" name="password" required>
+        <label for="error" class="claseErrores"></label>
     </div>
     
     <input type="submit" value="Iniciar Sesión">

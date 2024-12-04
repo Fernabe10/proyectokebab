@@ -3,7 +3,7 @@ window.addEventListener("load", function () {
     const kebabId = urlParams.get("id");
 
     if (kebabId) {
-        cargarKebabYIngredientes(kebabId);
+        cargarKebabYIngredientes(kebabId); //este metodo carga el kebab y sus ingredientes
     } else {
         mostrarError("No se ha especificado el ID del kebab.");
     }

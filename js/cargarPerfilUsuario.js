@@ -14,7 +14,7 @@ window.addEventListener("load", function () {
                 return respuesta.json();
             })
             .then(function(usuario) {
-                // Selecciona la imagen de perfil usando su ID
+                
                 const imagen = document.querySelector("#perfil-foto");
                 
                 if (usuario.foto) {
@@ -23,7 +23,7 @@ window.addEventListener("load", function () {
                     console.error("La imagen no está disponible.");
                 }
             
-                // Actualizar los otros campos del perfil
+                
                 document.querySelector("label[name='nombre']").textContent = usuario.nombre;
                 document.querySelector("label[name='correo']").textContent = usuario.correo;
                 document.querySelector("label[name='monedero']").textContent = `${usuario.monedero} €`;

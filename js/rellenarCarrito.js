@@ -4,7 +4,7 @@ window.addEventListener("load", function () {
     function cargarCarrito() {
         const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
         const carritoContainer = document.getElementById("carritoContainer");
-        carritoContainer.innerHTML = ""; // Limpiar el contenedor
+        carritoContainer.innerHTML = "";
 
         if (carrito.length === 0) {
             carritoContainer.innerHTML = `<tr><td colspan="4">El carrito está vacío.</td></tr>`;
@@ -28,13 +28,13 @@ window.addEventListener("load", function () {
 
     function eliminarDelCarrito(index) {
         const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-        carrito.splice(index, 1); // Eliminar el producto del carrito
+        carrito.splice(index, 1);
         localStorage.setItem("carrito", JSON.stringify(carrito));
         cargarCarrito();
     }
 
     function vaciarCarrito() {
-        localStorage.removeItem("carrito"); // Vaciar el carrito en localStorage
+        localStorage.removeItem("carrito"); 
         cargarCarrito();
     }
 

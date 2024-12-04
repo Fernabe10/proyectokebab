@@ -1,5 +1,6 @@
 <head>
     <link rel="stylesheet" href="css/estilo-contacto.css">
+    <script src="js/contacto.js"></script>
 </head>
 
 <body>
@@ -12,7 +13,7 @@
         </div>
         <div>
             <h1>Contáctanos</h1>
-            <form action="helpers/send-message.php" method="POST">
+            <form id="contactForm" action="Api/Api-Correo.php" method="POST">
                 <label>Nombre</label>
                 <input type="text" name="name" placeholder="Tu nombre" required>
 
@@ -36,35 +37,5 @@
             <div id="responseMessage"></div>
         </div>
     </div>
-    </div>
 </body>
 
-<script>
-    const form = document.getElementById('contactForm');
-    const responseMessage = document.getElementById('responseMessage');
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-
-        fetch('sendMessage.php', {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    responseMessage.innerHTML = `<p style="color: green;">${data.message}</p>`;
-                    form.reset();
-                } else {
-                    responseMessage.innerHTML = `<p style="color: red;">${data.message}</p>`;
-                }
-            })
-            .catch(error => {
-                responseMessage.innerHTML =
-                    `<p style="color: red;">Error inesperado al enviar el mensaje.</p>`;
-                console.error('Error:', error);
-            });
-    });
-</script>

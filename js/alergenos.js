@@ -16,14 +16,14 @@ window.addEventListener("load", function() {
                 return response.json();
             })
             .then(alergenos => {
-                // Limpiar el select antes de llenarlo
+                
                 selectAlergenos.innerHTML = "";
 
-                // Crear una opción por cada alérgeno recibido
+                
                 alergenos.forEach(alergeno => {
                     let option = document.createElement("option");
-                    option.value = alergeno.id;  // La ID del alérgeno será el valor
-                    option.textContent = alergeno.nombre;  // Se mostrará el nombre
+                    option.value = alergeno.id;  
+                    option.textContent = alergeno.nombre;  
                     selectAlergenos.appendChild(option);
                 });
             })
