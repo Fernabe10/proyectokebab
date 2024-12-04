@@ -53,17 +53,33 @@ window.addEventListener("load", function () {
     // Función que se ejecuta cuando se hace clic en el botón de "Pedir"
     
     function hacerPedido(nombre, precio) {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const producto = carrito.find(item => item.nombre === nombre);
-
-    if (producto) {
-        producto.cantidad++;
-        producto.precio_total = producto.cantidad * precio;
-    } else {
-        carrito.push({ nombre, precio_total: precio, cantidad: 1 });
+        // Verificar si el usuario está autenticado
+        fetch("helpers/verificar_sesion.php")
+            .then((respuesta) => respuesta.json())
+            .then((data) => {
+                if (!data.autenticado) {
+                    alert("Para pedir es necesario iniciar sesión");
+                    return;
+                }
+    
+                
+                const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+                const producto = carrito.find(item => item.nombre === nombre);
+    
+                if (producto) {
+                    producto.cantidad++;
+                    producto.precio_total = producto.cantidad * precio;
+                } else {
+                    carrito.push({ nombre, precio_total: precio, cantidad: 1 });
+                }
+    
+                localStorage.setItem("carrito", JSON.stringify(carrito));
+                alert("¡Producto añadido al carrito!");
+            })
+            .catch((error) => {
+                console.error("Error al verificar la sesión:", error);
+            });
     }
-
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    alert("¡Producto añadido al carrito!");
-}
+    
+    
 });

@@ -71,7 +71,7 @@ function traerKebabs() {
         $repoAlergeno = new RepoIngredienteAlergeno();
 
         foreach ($ingredientes as $ingrediente) {
-            // Agregar el nombre del ingrediente a la lista
+            
             $ingredientesList[] = $ingrediente['nombre'];
 
             // Obtener los alérgenos del ingrediente
