@@ -77,11 +77,5 @@ window.addEventListener("load", function() {
     }
 
 
-    function borrarUsuario(){
-        
-    }
-
-    function editarUsuario(id) {
-        console.log("Editar usuario con ID:", id);
-    }
+    
 });
