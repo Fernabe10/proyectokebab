@@ -85,7 +85,7 @@ class RepoKebab{
 
         $kebabs = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // Aquí devolvemos un array, no un objeto
+            // devuelvo un array, no un objeto
             $kebabs[] = $row;
         }
         return $kebabs;

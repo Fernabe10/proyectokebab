@@ -38,7 +38,7 @@ function agregarFondos($usuarioId) {
     $balance = $_POST['balance'];
     //compruebo que es un numero
     if ($balance === null || !is_numeric($balance) || $balance <= 0) {
-        echo "Monto inválido.";
+        echo "Cantidad inválida.";
         exit;
     }
 

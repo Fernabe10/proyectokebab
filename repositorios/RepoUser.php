@@ -43,12 +43,20 @@ class RepoUsuario {
 
     public function modificarUsuario(User $usuario) {
         $sql = "UPDATE users 
-                SET nombre = :nombre, contrasena = :contrasena, correo = :correo, direccion = :direccion";
+                SET nombre = :nombre, 
+                    contrasena = :contrasena, 
+                    correo = :correo, 
+                    direccion = :direccion, 
+                    monedero = :monedero, 
+                    rol = :rol";
+    
         $params = [
             'nombre' => $usuario->getNombre(),
             'contrasena' => $usuario->getContrasena(),
             'correo' => $usuario->getCorreo(),
             'direccion' => $usuario->getDireccion(),
+            'monedero' => $usuario->getMonedero(),
+            'rol' => $usuario->getRol(),
             'id' => $usuario->getId(),
         ];
     
@@ -63,6 +71,7 @@ class RepoUsuario {
     
         return $stmt->rowCount() > 0;
     }
+    
     
 
 

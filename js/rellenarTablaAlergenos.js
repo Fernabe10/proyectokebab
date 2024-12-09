@@ -24,9 +24,9 @@ window.addEventListener("load", function () {
 
                     tbody.appendChild(tr);
                 });
-            }) // Cierre del segundo .then
+            }) 
             .catch(function (error) {
                 console.error("Error al cargar los alérgenos:", error);
-            }); // Manejo de errores del fetch
+            });
     }
 });

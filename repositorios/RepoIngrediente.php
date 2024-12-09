@@ -106,7 +106,7 @@ class RepoIngrediente{
                 $resultado['foto']
             );
         } else {
-            return null; // Si no se encuentra el ingrediente
+            return null; 
         }
     }
     

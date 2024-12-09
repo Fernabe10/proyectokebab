@@ -5,14 +5,11 @@ require_once '../helpers/sesion.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['_method']) && $_POST['_method'] == 'PUT') {
-        actualizarUsuario();
-    } else {
-        registrarUsuario();
-    }
+    registrarUsuario();
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
     obtenerUsuarios();
-} elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+} elseif ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+    actualizarUsuario();
 }
 
 
@@ -67,51 +64,50 @@ function obtenerUsuarios(){
 }
 
 function actualizarUsuario() {
-    
-    session_start();
+    // Leer el contenido de la solicitud PUT
+    $input = file_get_contents('php://input');
+    $data = json_decode($input, true);
 
-    
-    $usuarioId = Sesion::leer('usuario_id'); 
-    if (!$usuarioId) {
-        http_response_code(401);
-        echo json_encode(['message' => 'No se ha encontrado un usuario autenticado']);
+    // Verificar que los datos necesarios estén presentes
+    if (!isset($data['id'], $data['nombre'], $data['correo'], $data['direccion'], $data['monedero'], $data['rol'])) {
+        http_response_code(400); // Bad Request
+        echo json_encode(['error' => 'Datos incompletos para la actualización.']);
         return;
     }
 
-    
-    if (!isset($_POST['nombre'], $_POST['correo'], $_POST['direccion'], $_POST['password'])) {
-        http_response_code(400);
-        echo json_encode(['message' => 'Datos incompletos']);
-        return;
-    }
+    try {
+        // Crear la instancia del usuario con los datos proporcionados
+        $usuario = new User(
+            $data['id'],
+            $data['nombre'],
+            $data['contrasena'],
+            $data['correo'],
+            $data['direccion'],
+            $data['monedero'],
+            $data['rol'],
+            isset($data['foto']) ? $data['foto'] : null // Pasar la foto si está incluida, o null si no lo está
+        );
 
-    
-    $nombre = $_POST['nombre'];
-    $correo = $_POST['correo'];
-    $direccion = $_POST['direccion'];
-    $contrasena = $_POST['password'];
+        // Llamar al repositorio para actualizar el usuario en la base de datos
+        $repoUsuario = new RepoUsuario();
+        $resultado = $repoUsuario->modificarUsuario($usuario);
 
-    
-    $foto = null;
-    if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
-        $fotoContenido = file_get_contents($_FILES['foto']['tmp_name']);
-        $foto = base64_encode($fotoContenido);
-    }
-
-    
-    $repoUsuario = new RepoUsuario();
-    $usuario = new User($usuarioId, $nombre, $contrasena, $correo, $direccion, null, null, $foto);
-    $resultado = $repoUsuario->modificarUsuario($usuario);
-
-    
-    if ($resultado) {
-        http_response_code(200);
-        echo json_encode(['message' => 'Usuario actualizado correctamente']);
-    } else {
+        if ($resultado) {
+            http_response_code(200); // OK
+            echo json_encode(['mensaje' => 'Usuario actualizado correctamente.']);
+        } else {
+            http_response_code(500); // Error interno
+            echo json_encode(['error' => 'No se pudo actualizar el usuario. Verifica los datos y vuelve a intentarlo.']);
+        }
+    } catch (Exception $e) {
+        error_log("Error al actualizar usuario: " . $e->getMessage());
         http_response_code(500);
-        echo json_encode(['message' => 'Error al actualizar el usuario']);
+        echo json_encode(['error' => 'Error al procesar la actualización: ' . $e->getMessage()]);
     }
 }
+
+
+
 
 
 ?>

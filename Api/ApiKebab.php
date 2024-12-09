@@ -7,17 +7,15 @@ require_once '../helpers/sesion.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     insertarKebab();
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
-    traerKebabPorId(); // Otro metodo por si me pasa la id del kebab
+    traerKebabPorId(); // otro metodo por si me pasa la id del kebab
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    traerKebabs(); // Si no hay ID, traemos todos los kebabs
+    traerKebabs(); // si no hay ID, traemos todos los kebabs
 } elseif ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     
 } elseif ($_SERVER['REQUEST_METHOD'] == 'PUT') {
     
 }
 
-
-//Función para insertar un nuevo kebab en la base de datos.
 
 function insertarKebab() {
     $nombre = $_POST['nombre'];
@@ -55,7 +53,7 @@ function insertarKebab() {
 }
 
 
-//Función para traer todos los kebabs con sus ingredientes.
+
 
 function traerKebabs() {
     $repoKebab = new RepoKebab();
@@ -88,7 +86,7 @@ function traerKebabs() {
             'descripcion' => $kebab['descripcion'],
             'precio' => $kebab['precio_base'],
             'ingredientes' => $ingredientesList,
-            'alergenos' => array_values($alergenosList) // Convierto de array asociativo a lista simple
+            'alergenos' => array_values($alergenosList) // lo convierto de array asociativo a lista simple
         ];
     }
 

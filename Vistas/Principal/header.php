@@ -47,7 +47,7 @@ Sesion::iniciarSesion();
                 <li>Pedidos</li>
                     <div class="dropdown-content pedidos">
                         <a href="?menu=verPedidos">Ver Pedidos</a>
-                        <a href="?menu=grafico">Gráfico Ventas</a>
+                        <a href="?menu=grafico">Gráfico Pedidos</a>
                         </div>
                     </div>';
                 

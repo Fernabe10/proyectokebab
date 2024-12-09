@@ -20,13 +20,13 @@ class RepoKebabIngrediente {
         }
     }
 
-    // Obtener todos los ingredientes disponibles
+    
     public function getAllIngredientes() {
         $stmt = $this->con->query("SELECT id, nombre FROM Ingrediente");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Obtener los ingredientes asociados a un kebab específico
+    
     public function getIngredientesByKebabId($kebabId) {
         $stmt = $this->con->prepare("
             SELECT i.id, i.nombre
@@ -36,7 +36,7 @@ class RepoKebabIngrediente {
         ");
         $stmt->execute([$kebabId]);
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Devuelve un array asociativo con id y nombre
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // array asociativo con id y nombre
     }
 }
 

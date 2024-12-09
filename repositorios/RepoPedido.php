@@ -64,24 +64,24 @@ class RepoPedido{
     }
 
     public function getPedidosByUsuario($idUsuario){
-    // Preparar la consulta para seleccionar solo los campos deseados
+    
     $sql = "SELECT id, nombre, precio_total, fecha_hora, cantidad, estado, direccion 
             FROM Pedido 
             WHERE id_usuario = :idUsuario";
     $stmt = $this->con->prepare($sql);
 
-    // Asociar el parámetro a la consulta
-    $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
+    
+    $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT); //vinculo un parametro a una variable php para sacar los pedidos de x usuario
 
-    // Ejecutar la consulta y manejar errores
+    
     if (!$stmt->execute()) {
         return false;
     }
 
-    // Crear un array para almacenar los pedidos
+    
     $pedidos = [];
 
-    // Recorrer los resultados y convertirlos en objetos Pedido
+    
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $pedidos[] = [
             'id' => $row['id'],

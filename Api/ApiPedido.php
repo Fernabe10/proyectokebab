@@ -83,7 +83,7 @@ function agregarPedido() {
             return;
         }
 
-        //Aqui los inserto
+        // los inserto
         $pedido = new Pedido(null, $usuarioId, $nombre, $precio_total, $fecha_hora, $cantidad, $estado, $direccion);
 
         
@@ -134,7 +134,8 @@ function traerPedidos(){
 }
 
 function actualizarEstado(){
-    // Obtengo los datos del cuerpo de la solicitud PUT
+    // en los pedidos saco el id y estado de los pedidos, con esto
+    //obtengo los datos del cuerpo de la solicitud PUT, lo decodifico de JSON a array asociativo de php
     $data = json_decode(file_get_contents("php://input"), true);
 
     if (isset($data['id']) && isset($data['estado'])) {
